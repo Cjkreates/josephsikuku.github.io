@@ -3,29 +3,90 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tech insights, tutorials and thoughts by Sikuku Joseph" />
   <title>Blog | Sikuku Joseph</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f5f7fa; color: #333; padding: 2rem; }
-    h1 { color: #1f2937; }
-    a { color: #3b82f6; text-decoration: none; }
-    article { margin-bottom: 2rem; }
+    :root {
+      --bg: #f5f7fa;
+      --text: #333;
+      --header-bg: #1f2937;
+      --accent: #3b82f6;
+    }
+    [data-theme='dark'] {
+      --bg: #121212;
+      --text: #f3f3f3;
+      --header-bg: #0d1117;
+      --accent: #90cdf4;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      background: var(--header-bg);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    article {
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    h2 {
+      margin-top: 0;
+      color: var(--header-bg);
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      background: var(--header-bg);
+      color: white;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
   </style>
 </head>
 <body>
-  <h1>My Blog</h1>
-  <p>Welcome to my thoughts on tech, life, and career.</p>
-
-  <article>
-    <h2><a href="#">How I Built My Portfolio Site</a></h2>
-    <p>A walkthrough of the tools, code, and ideas behind this site.</p>
-  </article>
-
-  <article>
-    <h2><a href="#">Top 5 Tools for IT Analysts</a></h2>
-    <p>A quick look at the tools that help me stay productive and effective.</p>
-  </article>
-
-  <footer><p>Back to <a href="index.html">Home</a></p></footer>
+  <header>
+    <h1>Sikuku Joseph's Blog</h1>
+    <p>Thoughts, tutorials & tech insights</p>
+  </header>
+  <main>
+    <article>
+      <h2><a href="#">How I Built My Portfolio Site</a></h2>
+      <p>A walkthrough of the tools, code, and design decisions behind my portfolio.</p>
+    </article>
+    <article>
+      <h2><a href="#">Top 5 Tools for IT Analysts</a></h2>
+      <p>A quick look at my favorite tools for staying productive and effective.</p>
+    </article>
+  </main>
+  <footer>
+    <p>© <span id="year"></span> Sikuku Joseph | <a href="index.html" style="color:#90cdf4;">Home</a></p>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
