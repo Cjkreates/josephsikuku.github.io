@@ -1,10 +1,22 @@
+<!-- Full enhanced HTML code with About Me, Experience, Skills, Certifications, Contact, Projects -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Professional IT Analyst Portfolio - Sikuku Joseph"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional IT Analyst Portfolio - Sikuku Joseph" />
+  <meta name="keywords" content="Sikuku Joseph, IT Analyst, Network Support, Kenya, Web Portfolio" />
+  <meta name="author" content="Sikuku Joseph" />
+  <meta name="robots" content="index, follow" />
   <title>Sikuku Joseph | IT Analyst Portfolio</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <style>
     :root {
       --bg: #f5f7fa;
@@ -18,7 +30,6 @@
       --header-bg: #0d1117;
       --accent: #90cdf4;
     }
-
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
@@ -26,7 +37,6 @@
       color: var(--text);
       transition: background 0.3s, color 0.3s;
     }
-
     header {
       background: var(--header-bg);
       color: white;
@@ -34,17 +44,8 @@
       padding: 3rem 1rem;
       position: relative;
     }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin: 0.5rem 0;
-    }
-
-    header p {
-      margin: 0.2rem;
-      font-size: 1.1rem;
-    }
-
+    header h1 { font-size: 2.5rem; margin: 0.5rem 0; }
+    header p { margin: 0.2rem; font-size: 1.1rem; }
     #toggle-theme {
       position: absolute;
       top: 1rem;
@@ -56,32 +57,30 @@
       border-radius: 5px;
       cursor: pointer;
     }
-
     section {
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
-
     h2 {
       color: var(--header-bg);
       border-bottom: 2px solid var(--accent);
       padding-bottom: 0.3rem;
     }
-
-    ul {
-      padding-left: 1.2rem;
-    }
-
-    a {
-      color: var(--accent);
+    ul { padding-left: 1.2rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .cert-list a { display: block; margin: 0.2rem 0; }
+    .button-download {
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 5px;
       text-decoration: none;
+      margin-top: 10px;
     }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
     footer {
       text-align: center;
       background: var(--header-bg);
@@ -89,15 +88,7 @@
       padding: 1rem;
       margin-top: 3rem;
     }
-
-    .cert-list a {
-      display: block;
-      margin: 0.2rem 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
@@ -105,9 +96,7 @@
     <button id="toggle-theme">Toggle Theme</button>
     <h1>Sikuku Joseph</h1>
     <p>IT Analyst | Network Specialist | AI-Driven Multimedia Developer</p>
-    <p><a href="mailto:josesikuku17@gmail.com" style="color:#60a5fa;">Email Me</a> | 
-       <a href="https://www.linkedin.com/in/joseph-sikuku" target="_blank" style="color:#60a5fa;">LinkedIn</a>
-    </p>
+    <a href="joseph_sikuku_resume.pdf" class="button-download" download>Download Resume (PDF)</a>
   </header>
 
   <section id="about">
@@ -170,77 +159,75 @@
        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/joseph-sikuku" target="_blank">linkedin.com/in/joseph-sikuku</a></p>
   </section>
 
+  <section>
+    <h2>Contact Me</h2>
+    <form action="https://formsubmit.co/el/codijo" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="name" placeholder="Sikuku Joseph" required style="width:100%;padding:10px;margin-bottom:10px;">
+      <input type="email" name="email" placeholder="josesikuku17@gmail.com" required style="width:100%;padding:10px;margin-bottom:10px;">
+      <textarea name="message" rows="5" placeholder="Your Message" required style="width:100%;padding:10px;margin-bottom:10px;"></textarea>
+      <button type="submit" style="padding:10px 20px;background:#3b82f6;color:#fff;border:none;cursor:pointer;">Send Message</button>
+    </form>
+  </section>
 
-<h2>Contact Me</h2>
-<form action="https://formsubmit.co/el/codijo" method="POST">
+  <section>
+    <h2>Featured Projects</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+      <div style="flex: 1 1 250px; background: #fff; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;">
+        <img src="https://via.placeholder.com/300x150.png?text=AI+Video+Demo" alt="AI Video" style="width:100%;">
+        <h4>AI Video Creation</h4>
+        <p>Used Midjourney, OpenAI & CapCut to generate engaging video content.</p>
+      </div>
+      <div style="flex: 1 1 250px; background: #fff; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;">
+        <img src="https://via.placeholder.com/300x150.png?text=Network+Simulation" alt="Network Simulation" style="width:100%;">
+        <h4>Network Simulation</h4>
+        <p>Built Cisco Packet Tracer projects to simulate enterprise LAN/WAN setups.</p>
+      </div>
+    </div>
+  </section>
 
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-  <input type="text" name="name" placeholder="Sikuku Joseph" required style="width:100%;padding:10px;margin-bottom:10px;">
-  <input type="email" name="email" placeholder="josesikuku17@gmail.com" required style="width:100%;padding:10px;margin-bottom:10px;">
-  <textarea name="message" rows="5" placeholder="Your Message" required style="width:100%;padding:10px;margin-bottom:10px;"></textarea>
-  <button type="submit" style="padding:10px 20px;background:#3b82f6;color:#fff;border:none;cursor:pointer;">Send Message</button>
-</form>
+  <section>
+    <h2>GitHub Projects</h2>
+    <div id="github-projects" style="margin-top:1rem;"></div>
+  </section>
 
-<h2>Featured Projects</h2>
-<div style="display: flex; flex-wrap: wrap; gap: 20px;">
-  <div style="flex: 1 1 250px; background: #fff; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;">
-    <img src="https://via.placeholder.com/300x150.png?text=AI+Video+Demo" alt="AI Video" style="width:100%;">
-    <h4>AI Video Creation</h4>
-    <p>Used Midjourney, OpenAI & CapCut to generate engaging video content.</p>
-  </div>
-  <div style="flex: 1 1 250px; background: #fff; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;">
-    <img src="https://via.placeholder.com/300x150.png?text=Network+Simulation" alt="Network Simulation" style="width:100%;">
-    <h4>Network Simulation</h4>
-    <p>Built Cisco Packet Tracer projects to simulate enterprise LAN/WAN setups.</p>
-  </div>
-</div>
-
-<h2>GitHub Projects</h2>
-<div id="github-projects" style="margin-top:1rem;"></div>
-
-<script>
-  // GitHub API integration (replace 'Cjkreates' with your GitHub username)
-  fetch("https://api.github.com/users/Cjkreates/repos?sort=updated&per_page=5")
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById("github-projects");
-      data.forEach(repo => {
-        const div = document.createElement("div");
-        div.innerHTML = `
-          <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4>
-          <p>${repo.description || "No description available."}</p>
-        `;
-        container.appendChild(div);
-      });
-    })
-    .catch(err => {
-      document.getElementById("github-projects").innerHTML = "<p>Unable to load GitHub projects.</p>";
-    });
-</script>
-
+  <section>
+  
+    <ul>
+      <li><a href="blog.html">My Blog</a> - Personal articles, tutorials & insights (in development)</li>
+      <li><a href="projects.html">More Projects</a> - Extended portfolio gallery (in development)</li>
+    </ul>
+  </section>
 
   <footer>
     <p>© <span id="year"></span> Sikuku Joseph | IT Analyst Portfolio</p>
   </footer>
 
-  <!-- JavaScript -->
   <script>
-    // Auto-update footer year
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Light/Dark theme toggle
     const toggleBtn = document.getElementById("toggle-theme");
     toggleBtn.addEventListener("click", () => {
       const current = document.documentElement.getAttribute("data-theme");
       const next = current === "dark" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", next);
     });
-
-    // Set default theme on load
     if (!document.documentElement.getAttribute("data-theme")) {
       document.documentElement.setAttribute("data-theme", "light");
     }
+    fetch("https://api.github.com/users/Cjkreates/repos?sort=updated&per_page=5")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("github-projects");
+        data.forEach(repo => {
+          const div = document.createElement("div");
+          div.innerHTML = `<h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4><p>${repo.description || "No description available."}</p>`;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => {
+        document.getElementById("github-projects").innerHTML = "<p>Unable to load GitHub projects.</p>";
+      });
   </script>
 </body>
 </html>
