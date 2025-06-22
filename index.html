@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Professional IT Analyst Portfolio - Sikuku Joseph">
-  <meta name="keywords" content="Sikuku Joseph, IT Analyst, Network Support, Kenya, Web Portfolio">
-  <meta name="author" content="Sikuku Joseph">
-  <meta property="og:title" content="Sikuku Joseph | IT Analyst Portfolio" />
-  <meta property="og:description" content="Explore projects, certifications, and technical expertise in IT, Network Support, and AI Multimedia Development." />
-  <meta property="og:image" content="preview-image.png" />
-  <meta property="og:url" content="https://cjkreates.github.io/josephsikuku.github.io/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="favicon.ico" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional IT Analyst Portfolio - Sikuku Joseph" />
+  <meta name="keywords" content="Sikuku Joseph, IT Analyst, Network Support, Kenya, Web Portfolio" />
+  <meta name="author" content="Sikuku Joseph" />
+  <meta name="robots" content="index, follow" />
   <title>Sikuku Joseph | IT Analyst Portfolio</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <style>
     :root {
       --bg: #f5f7fa;
@@ -31,6 +34,7 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
+      transition: background 0.3s, color 0.3s;
     }
     header {
       background: var(--header-bg);
@@ -39,16 +43,18 @@
       padding: 3rem 1rem;
       position: relative;
     }
-    header h1 { font-size: 2.5rem; }
-    header p { font-size: 1.1rem; margin: 0.5rem 0; }
-    .button-download {
-      padding: 10px 20px;
+    header h1 { font-size: 2.5rem; margin: 0.5rem 0; }
+    header p { margin: 0.2rem; font-size: 1.1rem; }
+    #toggle-theme {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.4rem 0.8rem;
       background: var(--accent);
       color: white;
-      text-decoration: none;
+      border: none;
       border-radius: 5px;
-      margin-top: 10px;
-      display: inline-block;
+      cursor: pointer;
     }
     section {
       max-width: 900px;
@@ -56,29 +62,23 @@
       padding: 0 1rem;
     }
     h2 {
+      color: var(--header-bg);
       border-bottom: 2px solid var(--accent);
       padding-bottom: 0.3rem;
-      color: var(--header-bg);
     }
-    .project-card {
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 1rem;
-      margin: 1rem 0;
-    }
-    .project-card img {
-      width: 100%;
-      border-radius: 4px;
-    }
-    .tag {
+    ul { padding-left: 1.2rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .cert-list a { display: block; margin: 0.2rem 0; }
+    .button-download {
       display: inline-block;
+      padding: 10px 20px;
       background: var(--accent);
       color: white;
-      padding: 0.2rem 0.6rem;
-      margin: 0.2rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
     }
     footer {
       text-align: center;
@@ -87,57 +87,147 @@
       padding: 1rem;
       margin-top: 3rem;
     }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
   <header>
+    <button id="toggle-theme">Toggle Theme</button>
     <h1>Sikuku Joseph</h1>
-    <p>IT Analyst | Network Specialist | AI Multimedia Developer</p>
-    <a href="joseph_sikuku_resume.pdf" class="button-download" download>Download Resume</a>
+    <p>IT Analyst | Network Specialist | AI-Driven Multimedia Developer</p>
+    <a href="joseph_sikuku_resume.pdf" class="button-download" download>Download Resume (PDF)</a>
   </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m a dedicated and adaptable IT Analyst with hands-on experience in technical support, network configuration, and AI multimedia development. I blend creative problem-solving with technical expertise to drive efficiency and user satisfaction. My mission is to deliver practical IT solutions that align with modern digital trends and organizational goals.</p>
+
+    <h2>Experience</h2>
+    <ul>
+      <li><strong>Bank of India Kenya – IT & Network Support (May 2025 – Present):</strong>
+        <ul>
+          <li>Providing real-time IT and network support for core banking systems and office infrastructure.</li>
+          <li>Managing user accounts, setting up VLANs, and maintaining system integrity.</li>
+          <li>Troubleshooting LAN/WAN issues and documenting network configurations and solutions.</li>
+        </ul>
+      </li>
+      <li><strong>AI Video Project Developer – ALX (Oct 2024 – Nov 2024):</strong>
+        <ul>
+          <li>Created AI-generated content using OpenAI, Midjourney, CapCut.</li>
+          <li>Designed TikTok & YouTube visuals with soundtracks and voiceovers.</li>
+        </ul>
+      </li>
+      <li><strong>IT Support – Autocomm Computers (July – Sept 2023):</strong>
+        <ul>
+          <li>Repaired laptops and desktops, installed operating systems, and assisted with LAN setups.</li>
+          <li>Supported inventory, customer service, and shop reporting.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Networking:</strong> CCNA, Wireshark, Nmap, VLANs, Cisco routers/switches</li>
+      <li><strong>Operating Systems:</strong> Windows Server, Linux (Kali)</li>
+      <li><strong>Security:</strong> Microsoft Defender, Nessus</li>
+      <li><strong>Creative:</strong> CapCut, Illustrator, Photoshop, Canva</li>
+      <li><strong>Documentation & PM:</strong> Microsoft Visio, Trello, Jira, Notion</li>
+      <li><strong>Data:</strong> Microsoft Excel, SQL</li>
+    </ul>
+
+    <h2>Certifications</h2>
+    <div class="cert-list">
+      <a href="https://www.udemy.com/certificate/UC-8fa28af3-64ca-4426-b02a-ff7938593325/" target="_blank">✔ Adobe Illustrator – Udemy</a>
+      <a href="https://drive.google.com/file/d/1R0sDqBkuThO8maETfYO8UvTtaG8hWBc8/view?usp=sharing" target="_blank">✔ AI Augmented Professional Skills – ALX</a>
+      <a href="https://drive.google.com/file/d/1WQWmilNXPrXEu2EbEKP_hxv_mTpebC0J/view?usp=sharing" target="_blank">✔ CCNA – Kenyatta University</a>
+      <a href="https://drive.google.com/file/d/1qNR-Yetmd3VJmSvcblxnYozz2Y6Gybx4/view?usp=sharing" target="_blank">✔ Gov’t & Public Sector Tech – Kenya</a>
+    </div>
+
+    <h2>Education</h2>
+    <ul>
+      <li><strong>Diploma in Information Communication Technology</strong> – Rift Valley Institute of Business Studies</li>
+      <li><strong>CCNA Certification</strong> – Kenyatta University (2024)</li>
+      <li><strong>AI Augmented Skills Program</strong> – ALX (2024)</li>
+      <li><strong>Graphics Design (Illustrator)</strong> – Udemy (2024)</li>
+      <li><strong>KCSE</strong> – Bungoma High School (2019)</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p><strong>Email:</strong> josesikuku17@gmail.com<br>
+       <strong>Phone:</strong> +254 794 850 094<br>
+       <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/joseph-sikuku" target="_blank">linkedin.com/in/joseph-sikuku</a></p>
+  </section>
+
+  <section>
+    <h2>Contact Me</h2>
+    <form action="https://formsubmit.co/josesikuku17@gmail.com" method="POST">
+    <input type="hidden" name="_next" value="https://cjkreates.github.io/josephsikuku.github.io/thank-you.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="name" placeholder="Sikuku Joseph" required style="width:100%;padding:10px;margin-bottom:10px;">
+      <input type="email" name="email" placeholder="josesikuku17@gmail.com" required style="width:100%;padding:10px;margin-bottom:10px;">
+      <textarea name="message" rows="5" placeholder="Your Message" required style="width:100%;padding:10px;margin-bottom:10px;"></textarea>
+      <button type="submit" style="padding:10px 20px;background:#3b82f6;color:#fff;border:none;cursor:pointer;">Send Message</button>
+    </form>
+  </section>
 
   <section>
     <h2>Featured Projects</h2>
-
-    <div class="project-card">
-      <img src="1.png" alt="AI Video">
-      <h4>AI Video Creation</h4>
-      <span class="tag">AI</span><span class="tag">Creative</span>
-      <p>Created high-engagement video content using OpenAI, Midjourney, and CapCut. Combined AI visuals and voiceovers for TikTok/YouTube audiences with a focus on impactful digital storytelling.</p>
-    </div>
-
-    <div class="project-card">
-      <img src="3.png" alt="Network Simulation">
-      <h4>Network Simulation</h4>
-      <span class="tag">Networking</span><span class="tag">Cisco</span>
-      <p>Built and simulated enterprise LAN/WAN environments in Cisco Packet Tracer. Integrated VLANs, RIP routing, and network troubleshooting via Wireshark captures.</p>
-    </div>
-
-    <div class="project-card">
-      <h4>Metasploitable2 Exploitation Lab</h4>
-      <span class="tag">Cybersecurity</span><span class="tag">Kali Linux</span>
-      <p>Performed reconnaissance and exploitation on Metasploitable2 using Nmap and Metasploit. Demonstrated practical post-exploitation techniques and gained remote access in a virtualized lab.</p>
-    </div>
-
-    <div class="project-card">
-      <h4>Wireshark Network Analysis</h4>
-      <span class="tag">Wireshark</span><span class="tag">Security</span>
-      <p>Captured and analyzed real-time packets for troubleshooting HTTP latency and diagnosing protocol misconfigurations. Used filters to isolate anomalies and TCP stream analysis.</p>
-    </div>
-
-    <div class="project-card">
-      <h4>Active Directory Recon with BloodHound</h4>
-      <span class="tag">AD</span><span class="tag">Post-Exploitation</span>
-      <p>Used BloodHound CE on Kali Linux to map domain user paths and identify privilege escalation vectors. This lab covered enumeration, attack path visualizations, and graph analysis for red team operations.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+      <div style="flex: 1 1 250px; background: #fff; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;">
+        <img src="1.png" alt="AI Video" style="width:100%;">
+        <h4>AI Video Creation</h4>
+        <p>Used Midjourney, OpenAI & CapCut to generate engaging video content.</p>
+      </div>
+      <div style="flex: 1 1 250px; background: #fff; padding: 1rem; border: 1px solid #ccc; border-radius: 8px;">
+        <img src="3.png" alt="Network Simulation" style="width:100%;">
+        <h4>Network Simulation</h4>
+        <p>Built Cisco Packet Tracer projects to simulate enterprise LAN/WAN setups.</p>
+      </div>
     </div>
   </section>
 
+  <section>
+    <h2>GitHub Projects</h2>
+    <div id="github-projects" style="margin-top:1rem;"></div>
+  </section>
+
+  <section>
+    <h2>Coming Soon</h2>
+    <ul>
+      <li><a href="/blog.html">My Blog</a> - Personal articles, tutorials & insights (in development)</li>
+      <li><a href="/projects.html">More Projects</a> - Extended portfolio gallery (in development)</li>
+    </ul>
+  </section>
+
   <footer>
-    <p>&copy; <span id="year"></span> Sikuku Joseph | IT Analyst Portfolio</p>
+    <p>© <span id="year"></span> Sikuku Joseph | IT Analyst Portfolio</p>
   </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    const toggleBtn = document.getElementById("toggle-theme");
+    toggleBtn.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+    });
+    if (!document.documentElement.getAttribute("data-theme")) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+    fetch("https://api.github.com/users/Cjkreates/repos?sort=updated&per_page=5")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("github-projects");
+        data.forEach(repo => {
+          const div = document.createElement("div");
+          div.innerHTML = <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4><p>${repo.description || "No description available."}</p>;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => {
+        document.getElementById("github-projects").innerHTML = "<p>Unable to load GitHub projects.</p>";
+      });
   </script>
 </body>
 </html>
