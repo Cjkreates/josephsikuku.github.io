@@ -1,439 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Professional IT Analyst Portfolio - Sikuku Joseph">
-  <meta name="keywords" content="IT Analyst, Network Specialist, AI Developer, Kenya">
-  <title>Sikuku Joseph | IT Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional IT Analyst Portfolio - Sikuku Joseph" />
+  <meta name="keywords" content="Sikuku Joseph, IT Analyst, Network Support, Kenya, Web Portfolio" />
+  <meta name="author" content="Sikuku Joseph" />
+  <meta name="robots" content="index, follow" />
+  <title>Sikuku Joseph | IT Analyst Portfolio</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <style>
     :root {
-      --primary: #3b82f6;
-      --dark: #1f2937;
-      --light: #f5f7fa;
-      --accent: #10b981;
+      --bg: #f5f7fa;
+      --text: #333;
+      --header-bg: #1f2937;
+      --accent: #3b82f6;
     }
     [data-theme='dark'] {
-      --primary: #90cdf4;
-      --dark: #0d1117;
-      --light: #121212;
-      --accent: #34d399;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      --bg: #121212;
+      --text: #f3f3f3;
+      --header-bg: #0d1117;
+      --accent: #90cdf4;
     }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: var(--light);
-      color: var(--dark);
-      transition: all 0.3s ease;
-      line-height: 1.6;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
     }
     header {
-      background: var(--dark);
+      background: var(--header-bg);
       color: white;
       text-align: center;
-      padding: 4rem 1rem;
+      padding: 3rem 1rem;
       position: relative;
     }
+    header h1 { font-size: 2.5rem; margin: 0.5rem 0; }
+    header p { margin: 0.2rem; font-size: 1.1rem; }
     #toggle-theme {
       position: absolute;
       top: 1rem;
       right: 1rem;
-      background: var(--primary);
+      padding: 0.4rem 0.8rem;
+      background: var(--accent);
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
       border-radius: 5px;
       cursor: pointer;
     }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
     section {
-      padding: 4rem 0;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      position: relative;
+      color: var(--header-bg);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.3rem;
+    }
+    ul { padding-left: 1.2rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .cert-list a { display: block; margin: 0.2rem 0; }
+    .button-download {
       display: inline-block;
-    }
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 70px;
-      height: 4px;
-      background: var(--primary);
-    }
-    /* Skill Bars */
-    .skill-bar {
-      margin: 1.5rem 0;
-    }
-    .bar-container {
-      height: 10px;
-      background: #e0e0e0;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
       border-radius: 5px;
-      margin-top: 0.5rem;
+      text-decoration: none;
+      margin-top: 10px;
     }
-    .bar {
-      height: 100%;
-      background: var(--primary);
-      border-radius: 5px;
-      width: 0;
-      transition: width 1.5s ease;
+    footer {
+      text-align: center;
+      background: var(--header-bg);
+      color: white;
+      padding: 1rem;
+      margin-top: 3rem;
     }
-    /* Project Grid */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
+    html { scroll-behavior: smooth; }
     .project-card {
-      background: white;
+      flex: 1 1 250px;
+      background: var(--bg);
+      padding: 1.5rem;
+      border: 1px solid #ccc;
       border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
     .project-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-5px);
     }
     .project-card img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .project-content {
-      padding: 1.5rem;
-    }
-    /* Timeline */
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 3rem auto;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--primary);
-      transform: translateX(-50%);
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2rem;
-    }
-    .timeline-date {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: bold;
-    }
-    .timeline-content {
-      width: calc(50% - 2rem);
-      padding: 1.5rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
-    .timeline-item:nth-child(odd) .timeline-content {
-      margin-left: auto;
-    }
-    /* Testimonial Carousel */
-    .testimonial-carousel {
-      position: relative;
-      max-width: 800px;
-      margin: 3rem auto;
-      overflow: hidden;
-    }
-    .testimonial {
-      display: none;
-      text-align: center;
-      padding: 2rem;
-    }
-    .testimonial.active {
-      display: block;
-    }
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.5rem;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-    .carousel-prev {
-      left: 1rem;
-    }
-    .carousel-next {
-      right: 1rem;
-    }
-    /* Contact Form */
-    #contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    #contact-form input,
-    #contact-form textarea {
-      width: 100%;
-      padding: 1rem;
+      border-radius: 5px;
       margin-bottom: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 5px;
     }
-    #contact-form button {
-      background: var(--primary);
+    .project-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 1rem;
+    }
+    blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .social-links a {
       color: white;
-      border: none;
-      padding: 1rem 2rem;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    /* Responsive */
-    @media (max-width: 768px) {
-      .timeline::before {
-        left: 30px;
-      }
-      .timeline-date {
-        left: 30px;
-      }
-      .timeline-content {
-        width: calc(100% - 80px);
-        margin-left: 80px !important;
-      }
+      font-size: 1.2rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <button id="toggle-theme">Toggle Dark Mode</button>
-    <div class="container">
-      <h1>Sikuku Joseph</h1>
-      <p>IT Analyst | Network Specialist | AI Developer</p>
-      <a href="#contact" class="cta-button">Get In Touch</a>
-    </div>
+    <button id="toggle-theme">Toggle Theme</button>
+    <h1>Sikuku Joseph</h1>
+    <p>IT Analyst | Network Specialist | AI-Driven Multimedia Developer</p>
+    <a href="joseph_sikuku_resume.pdf" class="button-download" download>Download Resume (PDF)</a>
   </header>
 
-  <section id="about" class="container">
+  <section id="about">
     <h2>About Me</h2>
-    <p>Innovative IT professional with expertise in network infrastructure and AI-driven solutions. I bridge technical complexity with user-friendly implementations.</p>
-    
-    <div class="achievements">
-      <div class="achievement-item">
-        <span class="counter" data-target="42">0</span>
-        <p>Projects Completed</p>
-      </div>
-      <div class="achievement-item">
-        <span class="counter" data-target="500">0</span>
-        <p>Devices Configured</p>
-      </div>
+    <p>I'm a dedicated and adaptable IT Analyst with hands-on experience in technical support, network configuration, and AI multimedia development. I blend creative problem-solving with technical expertise to drive efficiency and user satisfaction. My mission is to deliver practical IT solutions that align with modern digital trends and organizational goals.</p>
+
+    <h2>Experience</h2>
+    <ul>
+      <li><strong>Bank of India Kenya – IT & Network Support (May 2025 – Present):</strong>
+        <ul>
+          <li>Providing real-time IT and network support for core banking systems and office infrastructure.</li>
+          <li>Managing user accounts, setting up VLANs, and maintaining system integrity.</li>
+          <li>Troubleshooting LAN/WAN issues and documenting network configurations and solutions.</li>
+        </ul>
+      </li>
+      <li><strong>AI Video Project Developer – ALX (Oct 2024 – Nov 2024):</strong>
+        <ul>
+          <li>Created AI-generated content using OpenAI, Midjourney, CapCut.</li>
+          <li>Designed TikTok & YouTube visuals with soundtracks and voiceovers.</li>
+        </ul>
+      </li>
+      <li><strong>IT Support – Autocomm Computers (July – Sept 2023):</strong>
+        <ul>
+          <li>Repaired laptops and desktops, installed operating systems, and assisted with LAN setups.</li>
+          <li>Supported inventory, customer service, and shop reporting.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Networking:</strong> CCNA, Wireshark, Nmap, VLANs, Cisco routers/switches</li>
+      <li><strong>Operating Systems:</strong> Windows Server, Linux (Kali)</li>
+      <li><strong>Security:</strong> Microsoft Defender, Nessus</li>
+      <li><strong>Creative:</strong> CapCut, Illustrator, Photoshop, Canva</li>
+      <li><strong>Documentation & PM:</strong> Microsoft Visio, Trello, Jira, Notion</li>
+      <li><strong>Data:</strong> Microsoft Excel, SQL</li>
+    </ul>
+
+    <h2>Tools & Platforms</h2>
+    <ul>
+      <li><strong>AI Tools:</strong> Midjourney, Leonardo AI, OpenAI, ChatGPT</li>
+      <li><strong>Editors & IDEs:</strong> VS Code, CapCut</li>
+      <li><strong>Productivity:</strong> Notion, Miro, Google Drive</li>
+    </ul>
+
+    <h2>Certifications</h2>
+    <div class="cert-list">
+      <a href="https://www.udemy.com/certificate/UC-8fa28af3-64ca-4426-b02a-ff7938593325/" target="_blank">✔ Adobe Illustrator – Udemy</a>
+      <a href="https://drive.google.com/file/d/1R0sDqBkuThO8maETfYO8UvTtaG8hWBc8/view?usp=sharing" target="_blank">✔ AI Augmented Professional Skills – ALX</a>
+      <a href="https://drive.google.com/file/d/1WQWmilNXPrXEu2EbEKP_hxv_mTpebC0J/view?usp=sharing" target="_blank">✔ CCNA – Kenyatta University</a>
+      <a href="https://drive.google.com/file/d/1qNR-Yetmd3VJmSvcblxnYozz2Y6Gybx4/view?usp=sharing" target="_blank">✔ Gov't & Public Sector Tech – Kenya</a>
     </div>
+
+    <h2>Education</h2>
+    <ul>
+      <li><strong>Diploma in Information Communication Technology</strong> – Rift Valley Institute of Business Studies</li>
+      <li><strong>CCNA Certification</strong> – Kenyatta University (2024)</li>
+      <li><strong>AI Augmented Skills Program</strong> – ALX (2024)</li>
+      <li><strong>Graphics Design (Illustrator)</strong> – Udemy (2024)</li>
+      <li><strong>KCSE</strong> – Bungoma High School (2019)</li>
+    </ul>
+
+    <h2>What I'm Learning</h2>
+    <ul>
+      <li>Cloud Networking with AWS & Azure</li>
+      <li>Python for Network Automation</li>
+      <li>Power BI for Data Visualization</li>
+      <li>Advanced Adobe After Effects for motion graphics</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p><strong>Email:</strong> josesikuku17@gmail.com<br>
+       <strong>Phone:</strong> +254 794 850 094<br>
+       <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/joseph-sikuku" target="_blank">linkedin.com/in/joseph-sikuku</a></p>
   </section>
 
-  <section id="skills" class="container">
-    <h2>Technical Skills</h2>
-    
-    <div class="skill-bar">
-      <label>Network Configuration (CCNA)</label>
-      <div class="bar-container"><div class="bar" style="width: 90%"></div></div>
-    </div>
-    
-    <div class="skill-bar">
-      <label>AI Content Creation</label>
-      <div class="bar-container"><div class="bar" style="width: 85%"></div></div>
-    </div>
-    
-    <div class="tech-stack">
-      <h3>Technology Stack</h3>
-      <div class="tech-icons">
-        <img src="cisco-icon.svg" alt="Cisco" width="50">
-        <img src="wireshark-icon.svg" alt="Wireshark" width="50">
-        <img src="ai-icon.svg" alt="AI Tools" width="50">
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="container">
-    <h2>Featured Projects</h2>
-    
-    <div class="project-grid">
-      <div class="project-card">
-        <img src="ai-project.jpg" alt="AI Video Project">
-        <div class="project-content">
-          <h3>AI Video Creation</h3>
-          <p>Developed engaging short videos using Midjourney, OpenAI, and CapCut with optimized content delivery pipelines.</p>
-          <a href="#" class="project-link">View Case Study →</a>
-        </div>
-      </div>
-      
-      <div class="project-card">
-        <img src="network-project.jpg" alt="Network Project">
-        <div class="project-content">
-          <h3>Enterprise Network Design</h3>
-          <p>Designed and implemented secure VLAN architecture for financial institution with 99.9% uptime.</p>
-          <a href="#" class="project-link">See Details →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience" class="container">
-    <h2>Professional Journey</h2>
-    
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2025-Present</div>
-        <div class="timeline-content">
-          <h3>Bank of India Kenya</h3>
-          <p>IT & Network Support Specialist</p>
-          <ul>
-            <li>Implemented secure VLAN architecture</li>
-            <li>Reduced network downtime by 40%</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-content">
-          <h3>ALX Africa</h3>
-          <p>AI Video Developer</p>
-          <ul>
-            <li>Created AI-generated content pipeline</li>
-            <li>Produced 50+ viral videos</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="testimonials" class="container">
-    <h2>Client Testimonials</h2>
-    
-    <div class="testimonial-carousel">
-      <div class="testimonial active">
-        <img src="client1.jpg" alt="Client" width="80" style="border-radius:50%">
-        <blockquote>"Joseph transformed our network infrastructure with his innovative solutions."</blockquote>
-        <p><strong>— Director, Bank of India</strong></p>
-      </div>
-      
-      <button class="carousel-btn carousel-prev">❮</button>
-      <button class="carousel-btn carousel-next">❯</button>
-    </div>
-  </section>
-
-  <section id="contact" class="container">
-    <h2>Get In Touch</h2>
-    
-    <div class="availability">
-      <div class="status-indicator">
-        <span class="status-dot available"></span>
-        <span>Currently available for freelance projects</span>
-      </div>
-    </div>
-    
-    <form id="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+  <section>
+    <h2>Contact Me</h2>
+    <form action="https://formsubmit.co/josesikuku17@gmail.com" method="POST">
+    <input type="hidden" name="_next" value="https://cjkreates.github.io/josephsikuku.github.io/thank-you.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:10px;margin-bottom:10px;">
+      <input type="email" name="email" placeholder="Your Email" required style="width:100%;padding:10px;margin-bottom:10px;">
+      <textarea name="message" rows="5" placeholder="Your Message" required style="width:100%;padding:10px;margin-bottom:10px;"></textarea>
+      <button type="submit" style="padding:10px 20px;background:#3b82f6;color:#fff;border:none;cursor:pointer;">Send Message</button>
     </form>
   </section>
 
-  <footer style="background: var(--dark); color: white; text-align: center; padding: 2rem;">
-    <div class="container">
-      <div class="social-links">
-        <a href="https://github.com/Cjkreates" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/joseph-sikuku" target="_blank">LinkedIn</a>
-        <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
+  <section>
+    <h2>Featured Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="1.png" alt="AI Video">
+        <h3>AI Video Creation</h3>
+        <p>Developed engaging short videos using AI tools like Midjourney (for visuals), OpenAI (for scripts/voiceovers), and CapCut (for editing). Optimized content for platforms like YouTube and TikTok by integrating animations, subtitles, and background soundtracks. Focused on storytelling and audience engagement using generative AI techniques.</p>
+        <p><strong>Technologies:</strong> Midjourney, OpenAI, CapCut, Canva</p>
       </div>
-      <p>© <span id="year"></span> Sikuku Joseph. All rights reserved.</p>
+      <div class="project-card">
+        <img src="3.png" alt="Network Simulation">
+        <h3>Network Simulation</h3>
+        <p>Designed and simulated enterprise-level LAN/WAN network topologies using Cisco Packet Tracer. Implemented VLANs, routing protocols (e.g., OSPF), static routing, and IP addressing schemes. Documented configurations, tested connectivity, and troubleshooted common network issues in a virtualized environment.</p>
+        <p><strong>Technologies:</strong> Cisco Packet Tracer, Wireshark, OSPF, VLANs</p>
+      </div>
+      <div class="project-card">
+        <img src="1.png" alt="IT Support Documentation">
+        <h3>IT Support Documentation</h3>
+        <p>Created comprehensive documentation for IT support processes including troubleshooting guides, network setup procedures, and user manuals. Developed visual network diagrams using Microsoft Visio to help team members understand complex network configurations and troubleshooting workflows.</p>
+        <p><strong>Technologies:</strong> Microsoft Visio, Notion, Markdown</p>
+      </div>
+   
+</div>
+
+<script>
+document.querySelectorAll('.hotspot').forEach(area => {
+  area.addEventListener('mouseenter', (e) => {
+    const tooltip = document.querySelector('.tooltip');
+    tooltip.textContent = e.target.dataset.info;
+    tooltip.style.display = 'block';
+  });
+});
+</script>
+    </div>
+  </section>
+
+  <section>
+    <h2>GitHub Projects</h2>
+    <div id="github-projects" style="margin-top:1rem;"></div>
+    <img src="https://github-readme-stats.vercel.app/api?username=Cjkreates&show_icons=true&theme=radical" alt="GitHub Stats" style="width:100%;max-width:600px;margin-top:20px;">
+  </section>
+
+  <section>
+    <h2>What Others Say</h2>
+    <blockquote>
+      "Joseph is highly dependable and a fast learner in network configurations. His ability to troubleshoot complex network issues is impressive." 
+      <br><strong>– Allan Onyango, Cisco Instructor</strong>
+    </blockquote>
+    <blockquote>
+      "He's innovative and committed to solving technical challenges. Joseph brings both technical skills and creative problem-solving to every project."
+      <br><strong>– Alex Morwabe, ICT Lecturer</strong>
+    </blockquote>
+  </section>
+
+  <section>
+    <h2>Coming Soon</h2>
+    <ul>
+      <li><a href="/blog.html">My Blog</a> - Personal articles, tutorials & insights (in development)</li>
+      <li><a href="/projects.html">More Projects</a> - Extended portfolio gallery (in development)</li>
+      <li><a href="/tutorials.html">Video Tutorials</a> - Technical guides and how-tos (in development)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> Sikuku Joseph | IT Analyst Portfolio</p>
+    <div class="social-links">
+      <a href="https://github.com/Cjkreates" target="_blank" aria-label="GitHub">GitHub</a>
+      <a href="https://linkedin.com/in/joseph-sikuku" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+      <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter">Twitter</a>
     </div>
   </footer>
 
   <script>
-    // Theme Toggle
-    const toggleBtn = document.getElementById('toggle-theme');
-    toggleBtn.addEventListener('click', () => {
-      document.body.setAttribute('data-theme', 
-        document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const toggleBtn = document.getElementById("toggle-theme");
+    toggleBtn.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
     });
-    
-    // Counter Animation
-    const counters = document.querySelectorAll('.counter');
-    const speed = 200;
-    
-    counters.forEach(counter => {
-      const target = +counter.getAttribute('data-target');
-      const count = +counter.innerText;
-      const increment = target / speed;
-      
-      if (count < target) {
-        counter.innerText = Math.ceil(count + increment);
-        setTimeout(updateCounter, 1);
-      } else {
-        counter.innerText = target;
-      }
-    });
-    
-    // Carousel Functionality
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.testimonial');
-    
-    function showSlide(n) {
-      slides.forEach(slide => slide.classList.remove('active'));
-      currentSlide = (n + slides.length) % slides.length;
-      slides[currentSlide].classList.add('active');
+    if (!document.documentElement.getAttribute("data-theme")) {
+      document.documentElement.setAttribute("data-theme", "light");
     }
-    
-    document.querySelector('.carousel-next').addEventListener('click', () => {
-      showSlide(currentSlide + 1);
-    });
-    
-    document.querySelector('.carousel-prev').addEventListener('click', () => {
-      showSlide(currentSlide - 1);
-    });
-    
-    // Animate Skill Bars on Scroll
-    window.addEventListener('scroll', () => {
-      const skillBars = document.querySelectorAll('.bar');
-      skillBars.forEach(bar => {
-        const rect = bar.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          bar.style.width = bar.style.width; // Triggers animation
-        }
+    fetch("https://api.github.com/users/Cjkreates/repos?sort=updated&per_page=5")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("github-projects");
+        data.forEach(repo => {
+          const div = document.createElement("div");
+          div.innerHTML = `<div class="project-card">
+            <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+            <p>${repo.description || "No description available."}</p>
+            <p>Last updated: ${new Date(repo.updated_at).toLocaleDateString()}</p>
+          </div>`;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => {
+        document.getElementById("github-projects").innerHTML = "<p>Unable to load GitHub projects.</p>";
       });
-    });
-    
-    // Current Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Form Submission
-    document.getElementById('contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Message sent successfully!');
-      e.target.reset();
-    });
   </script>
 </body>
 </html>
