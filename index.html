@@ -246,6 +246,25 @@
         <p>Created comprehensive documentation for IT support processes including troubleshooting guides, network setup procedures, and user manuals. Developed visual network diagrams using Microsoft Visio to help team members understand complex network configurations and troubleshooting workflows.</p>
         <p><strong>Technologies:</strong> Microsoft Visio, Notion, Markdown</p>
       </div>
+      <div class="network-diagram">
+  <img src="network-map.png" alt="Network Architecture" usemap="#networkmap">
+  <map name="networkmap">
+    <area shape="rect" coords="100,50,200,150" 
+          data-info="Core Switch: Cisco Catalyst 9500" 
+          class="hotspot">
+  </map>
+  <div class="tooltip"></div>
+</div>
+
+<script>
+document.querySelectorAll('.hotspot').forEach(area => {
+  area.addEventListener('mouseenter', (e) => {
+    const tooltip = document.querySelector('.tooltip');
+    tooltip.textContent = e.target.dataset.info;
+    tooltip.style.display = 'block';
+  });
+});
+</script>
     </div>
   </section>
 
