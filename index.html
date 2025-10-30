@@ -22,19 +22,27 @@
       --text: #333;
       --header-bg: #1f2937;
       --accent: #3b82f6;
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
     }
     [data-theme='dark'] {
       --bg: #121212;
       --text: #f3f3f3;
       --header-bg: #0d1117;
       --accent: #90cdf4;
+      --card-bg: #1e1e1e;
+      --shadow: rgba(255, 255, 255, 0.05);
+    }
+    * {
+      box-sizing: border-box;
     }
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       background: var(--bg);
       color: var(--text);
       transition: background 0.3s, color 0.3s;
+      line-height: 1.6;
     }
     header {
       background: var(--header-bg);
@@ -43,8 +51,17 @@
       padding: 3rem 1rem;
       position: relative;
     }
-    header h1 { font-size: 2.5rem; margin: 0.5rem 0; }
-    header p { margin: 0.2rem; font-size: 1.1rem; }
+    header h1 { 
+      font-size: 2.5rem; 
+      margin: 0.5rem 0; 
+    }
+    header p { 
+      margin: 0.2rem; 
+      font-size: 1.1rem; 
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
     #toggle-theme {
       position: absolute;
       top: 1rem;
@@ -55,6 +72,10 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: opacity 0.3s;
+    }
+    #toggle-theme:hover {
+      opacity: 0.9;
     }
     section {
       max-width: 900px;
@@ -65,11 +86,31 @@
       color: var(--header-bg);
       border-bottom: 2px solid var(--accent);
       padding-bottom: 0.3rem;
+      margin-top: 2rem;
     }
-    ul { padding-left: 1.2rem; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .cert-list a { display: block; margin: 0.2rem 0; }
+    h2:first-child {
+      margin-top: 0;
+    }
+    ul { 
+      padding-left: 1.2rem; 
+    }
+    a { 
+      color: var(--accent); 
+      text-decoration: none; 
+      transition: color 0.2s;
+    }
+    a:hover { 
+      text-decoration: underline; 
+      color: var(--text);
+    }
+    .cert-list a { 
+      display: block; 
+      margin: 0.5rem 0; 
+      padding: 0.5rem;
+      border-radius: 5px;
+      background: var(--card-bg);
+      box-shadow: 0 1px 3px var(--shadow);
+    }
     .button-download {
       display: inline-block;
       padding: 10px 20px;
@@ -79,31 +120,47 @@
       border-radius: 5px;
       text-decoration: none;
       margin-top: 10px;
+      transition: background 0.3s;
+    }
+    .button-download:hover {
+      background: #2563eb;
+      text-decoration: none;
     }
     footer {
       text-align: center;
       background: var(--header-bg);
       color: white;
-      padding: 1rem;
+      padding: 1.5rem;
       margin-top: 3rem;
     }
-    html { scroll-behavior: smooth; }
+    html { 
+      scroll-behavior: smooth; 
+    }
     .project-card {
-      flex: 1 1 250px;
-      background: var(--bg);
+      flex: 1 1 300px;
+      background: var(--card-bg);
       padding: 1.5rem;
-      border: 1px solid #ccc;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      box-shadow: 0 4px 6px var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
     }
     .project-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 10px 15px var(--shadow);
     }
     .project-card img {
       width: 100%;
+      height: 180px;
+      object-fit: cover;
       border-radius: 5px;
       margin-bottom: 1rem;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
     }
     .project-grid {
       display: flex;
@@ -116,6 +173,9 @@
       padding-left: 1rem;
       margin: 1.5rem 0;
       font-style: italic;
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 0 5px 5px 0;
     }
     .social-links {
       display: flex;
@@ -126,15 +186,119 @@
     .social-links a {
       color: white;
       font-size: 1.2rem;
+      padding: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .social-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      text-decoration: none;
+    }
+    form {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px var(--shadow);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: inherit;
+    }
+    button[type="submit"] {
+      padding: 12px 24px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    button[type="submit"]:hover {
+      background: #2563eb;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .skill-category {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px var(--shadow);
+    }
+    .skill-category h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .nav-links a {
+      padding: 0.5rem 1rem;
+      background: var(--card-bg);
+      border-radius: 5px;
+      box-shadow: 0 2px 4px var(--shadow);
+    }
+    .placeholder-img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e5e7eb;
+      color: #6b7280;
+      font-size: 0.9rem;
+      height: 180px;
+      border-radius: 5px;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .project-grid {
+        flex-direction: column;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <button id="toggle-theme">Toggle Theme</button>
+    <button id="toggle-theme" aria-label="Toggle dark/light mode">Toggle Theme</button>
     <h1>Sikuku Joseph</h1>
     <p>IT Analyst | Network Specialist | AI-Driven Multimedia Developer</p>
     <a href="joseph_sikuku_resume.pdf" class="button-download" download>Download Resume (PDF)</a>
+    
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
   </header>
 
   <section id="about">
@@ -163,30 +327,61 @@
         </ul>
       </li>
     </ul>
+  </section>
 
+  <section id="skills">
     <h2>Skills</h2>
-    <ul>
-      <li><strong>Networking:</strong> CCNA, Wireshark, Nmap, VLANs, Cisco routers/switches</li>
-      <li><strong>Operating Systems:</strong> Windows Server, Linux (Kali)</li>
-      <li><strong>Security:</strong> Microsoft Defender, Nessus</li>
-      <li><strong>Creative:</strong> CapCut, Illustrator, Photoshop, Canva</li>
-      <li><strong>Documentation & PM:</strong> Microsoft Visio, Trello, Jira, Notion</li>
-      <li><strong>Data:</strong> Microsoft Excel, SQL</li>
-    </ul>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Networking</h3>
+        <p>CCNA, Wireshark, Nmap, VLANs, Cisco routers/switches</p>
+      </div>
+      <div class="skill-category">
+        <h3>Operating Systems</h3>
+        <p>Windows Server, Linux (Kali)</p>
+      </div>
+      <div class="skill-category">
+        <h3>Security</h3>
+        <p>Microsoft Defender, Nessus</p>
+      </div>
+      <div class="skill-category">
+        <h3>Creative</h3>
+        <p>CapCut, Illustrator, Photoshop, Canva</p>
+      </div>
+      <div class="skill-category">
+        <h3>Documentation & PM</h3>
+        <p>Microsoft Visio, Trello, Jira, Notion</p>
+      </div>
+      <div class="skill-category">
+        <h3>Data</h3>
+        <p>Microsoft Excel, SQL</p>
+      </div>
+    </div>
 
     <h2>Tools & Platforms</h2>
-    <ul>
-      <li><strong>AI Tools:</strong> Midjourney, Leonardo AI, OpenAI, ChatGPT</li>
-      <li><strong>Editors & IDEs:</strong> VS Code, CapCut</li>
-      <li><strong>Productivity:</strong> Notion, Miro, Google Drive</li>
-    </ul>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>AI Tools</h3>
+        <p>Midjourney, Leonardo AI, OpenAI, ChatGPT</p>
+      </div>
+      <div class="skill-category">
+        <h3>Editors & IDEs</h3>
+        <p>VS Code, CapCut</p>
+      </div>
+      <div class="skill-category">
+        <h3>Productivity</h3>
+        <p>Notion, Miro, Google Drive</p>
+      </div>
+    </div>
+  </section>
 
+  <section id="certifications">
     <h2>Certifications</h2>
     <div class="cert-list">
-      <a href="https://www.udemy.com/certificate/UC-8fa28af3-64ca-4426-b02a-ff7938593325/" target="_blank">✔ Adobe Illustrator – Udemy</a>
-      <a href="https://drive.google.com/file/d/1R0sDqBkuThO8maETfYO8UvTtaG8hWBc8/view?usp=sharing" target="_blank">✔ AI Augmented Professional Skills – ALX</a>
-      <a href="https://drive.google.com/file/d/1WQWmilNXPrXEu2EbEKP_hxv_mTpebC0J/view?usp=sharing" target="_blank">✔ CCNA – Kenyatta University</a>
-      <a href="https://drive.google.com/file/d/1qNR-Yetmd3VJmSvcblxnYozz2Y6Gybx4/view?usp=sharing" target="_blank">✔ Gov't & Public Sector Tech – Kenya</a>
+      <a href="https://www.udemy.com/certificate/UC-8fa28af3-64ca-4426-b02a-ff7938593325/" target="_blank" rel="noopener">✔ Adobe Illustrator – Udemy</a>
+      <a href="https://drive.google.com/file/d/1R0sDqBkuThO8maETfYO8UvTtaG8hWBc8/view?usp=sharing" target="_blank" rel="noopener">✔ AI Augmented Professional Skills – ALX</a>
+      <a href="https://drive.google.com/file/d/1WQWmilNXPrXEu2EbEKP_hxv_mTpebC0J/view?usp=sharing" target="_blank" rel="noopener">✔ CCNA – Kenyatta University</a>
+      <a href="https://drive.google.com/file/d/1qNR-Yetmd3VJmSvcblxnYozz2Y6Gybx4/view?usp=sharing" target="_blank" rel="noopener">✔ Gov't & Public Sector Tech – Kenya</a>
     </div>
 
     <h2>Education</h2>
@@ -205,59 +400,29 @@
       <li>Power BI for Data Visualization</li>
       <li>Advanced Adobe After Effects for motion graphics</li>
     </ul>
-
-    <h2>Contact</h2>
-    <p><strong>Email:</strong> josesikuku17@gmail.com<br>
-       <strong>Phone:</strong> +254 794 850 094<br>
-       <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/joseph-sikuku" target="_blank">linkedin.com/in/joseph-sikuku</a></p>
   </section>
 
-  <section>
-    <h2>Contact Me</h2>
-    <form action="https://formsubmit.co/josesikuku17@gmail.com" method="POST">
-    <input type="hidden" name="_next" value="https://cjkreates.github.io/josephsikuku.github.io/thank-you.html">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:10px;margin-bottom:10px;">
-      <input type="email" name="email" placeholder="Your Email" required style="width:100%;padding:10px;margin-bottom:10px;">
-      <textarea name="message" rows="5" placeholder="Your Message" required style="width:100%;padding:10px;margin-bottom:10px;"></textarea>
-      <button type="submit" style="padding:10px 20px;background:#3b82f6;color:#fff;border:none;cursor:pointer;">Send Message</button>
-    </form>
-  </section>
-
-  <section>
+  <section id="projects">
     <h2>Featured Projects</h2>
     <div class="project-grid">
       <div class="project-card">
-        <img src="1.png" alt="AI Video">
+        <div class="placeholder-img">AI Video Project Image</div>
         <h3>AI Video Creation</h3>
         <p>Developed engaging short videos using AI tools like Midjourney (for visuals), OpenAI (for scripts/voiceovers), and CapCut (for editing). Optimized content for platforms like YouTube and TikTok by integrating animations, subtitles, and background soundtracks. Focused on storytelling and audience engagement using generative AI techniques.</p>
         <p><strong>Technologies:</strong> Midjourney, OpenAI, CapCut, Canva</p>
       </div>
       <div class="project-card">
-        <img src="3.png" alt="Network Simulation">
+        <div class="placeholder-img">Network Simulation Image</div>
         <h3>Network Simulation</h3>
         <p>Designed and simulated enterprise-level LAN/WAN network topologies using Cisco Packet Tracer. Implemented VLANs, routing protocols (e.g., OSPF), static routing, and IP addressing schemes. Documented configurations, tested connectivity, and troubleshooted common network issues in a virtualized environment.</p>
         <p><strong>Technologies:</strong> Cisco Packet Tracer, Wireshark, OSPF, VLANs</p>
       </div>
       <div class="project-card">
-        <img src="1.png" alt="IT Support Documentation">
+        <div class="placeholder-img">IT Support Documentation Image</div>
         <h3>IT Support Documentation</h3>
         <p>Created comprehensive documentation for IT support processes including troubleshooting guides, network setup procedures, and user manuals. Developed visual network diagrams using Microsoft Visio to help team members understand complex network configurations and troubleshooting workflows.</p>
         <p><strong>Technologies:</strong> Microsoft Visio, Notion, Markdown</p>
       </div>
-   
-</div>
-
-<script>
-document.querySelectorAll('.hotspot').forEach(area => {
-  area.addEventListener('mouseenter', (e) => {
-    const tooltip = document.querySelector('.tooltip');
-    tooltip.textContent = e.target.dataset.info;
-    tooltip.style.display = 'block';
-  });
-});
-</script>
     </div>
   </section>
 
@@ -279,6 +444,23 @@ document.querySelectorAll('.hotspot').forEach(area => {
     </blockquote>
   </section>
 
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p><strong>Email:</strong> josesikuku17@gmail.com<br>
+       <strong>Phone:</strong> +254 794 850 094<br>
+       <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/joseph-sikuku" target="_blank" rel="noopener">linkedin.com/in/joseph-sikuku</a></p>
+    
+    <form id="contact-form" action="https://formsubmit.co/josesikuku17@gmail.com" method="POST">
+      <input type="hidden" name="_next" value="https://cjkreates.github.io/josephsikuku.github.io/thank-you.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
   <section>
     <h2>Coming Soon</h2>
     <ul>
@@ -291,39 +473,109 @@ document.querySelectorAll('.hotspot').forEach(area => {
   <footer>
     <p>© <span id="year"></span> Sikuku Joseph | IT Analyst Portfolio</p>
     <div class="social-links">
-      <a href="https://github.com/Cjkreates" target="_blank" aria-label="GitHub">GitHub</a>
-      <a href="https://linkedin.com/in/joseph-sikuku" target="_blank" aria-label="LinkedIn">LinkedIn</a>
-      <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter">Twitter</a>
+      <a href="https://github.com/Cjkreates" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </a>
+      <a href="https://linkedin.com/in/joseph-sikuku" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener" aria-label="Twitter">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+        </svg>
+      </a>
     </div>
   </footer>
 
   <script>
+    // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
+    
+    // Theme toggle functionality
     const toggleBtn = document.getElementById("toggle-theme");
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    
+    // Set initial theme based on user preference
+    if (prefersDarkScheme.matches) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+    
     toggleBtn.addEventListener("click", () => {
       const current = document.documentElement.getAttribute("data-theme");
       const next = current === "dark" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", next);
+      
+      // Save preference to localStorage
+      localStorage.setItem("theme", next);
     });
-    if (!document.documentElement.getAttribute("data-theme")) {
-      document.documentElement.setAttribute("data-theme", "light");
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      document.documentElement.setAttribute("data-theme", savedTheme);
     }
+    
+    // Form validation
+    const contactForm = document.getElementById("contact-form");
+    if (contactForm) {
+      contactForm.addEventListener("submit", function(e) {
+        const name = this.name.value.trim();
+        const email = this.email.value.trim();
+        const message = this.message.value.trim();
+        
+        if (!name || !email || !message) {
+          e.preventDefault();
+          alert("Please fill in all fields before submitting.");
+          return false;
+        }
+        
+        if (!isValidEmail(email)) {
+          e.preventDefault();
+          alert("Please enter a valid email address.");
+          return false;
+        }
+      });
+    }
+    
+    function isValidEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+    
+    // GitHub projects fetch
     fetch("https://api.github.com/users/Cjkreates/repos?sort=updated&per_page=5")
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
       .then(data => {
         const container = document.getElementById("github-projects");
-        data.forEach(repo => {
-          const div = document.createElement("div");
-          div.innerHTML = `<div class="project-card">
-            <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
-            <p>${repo.description || "No description available."}</p>
-            <p>Last updated: ${new Date(repo.updated_at).toLocaleDateString()}</p>
-          </div>`;
-          container.appendChild(div);
-        });
+        if (data && data.length > 0) {
+          data.forEach(repo => {
+            const div = document.createElement("div");
+            div.classList.add("project-card");
+            div.innerHTML = `
+              <h3><a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a></h3>
+              <p>${repo.description || "No description available."}</p>
+              <p>Last updated: ${new Date(repo.updated_at).toLocaleDateString()}</p>
+            `;
+            container.appendChild(div);
+          });
+        } else {
+          container.innerHTML = "<p>No public repositories found.</p>";
+        }
       })
       .catch(err => {
-        document.getElementById("github-projects").innerHTML = "<p>Unable to load GitHub projects.</p>";
+        console.error("Error fetching GitHub projects:", err);
+        document.getElementById("github-projects").innerHTML = "<p>Unable to load GitHub projects at this time.</p>";
       });
   </script>
 </body>
