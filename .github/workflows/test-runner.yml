@@ -1,12 +1,101 @@
-name: Test Self-Hosted Runner
+name: CI/CD Pipeline with Automated Deployment
 
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# Add permissions for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  test:
-    runs-on: self-hosted
+  # TESTING STAGE - Run all our quality checks
+  automated-testing:
+    runs-on: ubuntu-latest
+    
     steps:
-      - name: Check system
-        run: echo "✅ This is running on my self-hosted runner!"
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Show workspace structure
+      run: |
+        echo "📁 Workspace contents:"
+        ls -la
+        echo ""
+        echo "📄 File details:"
+        find . -name "*.html" -o -name "*.md" -o -name "*.py" | head -10
+        
+    - name: Run automated tests
+      run: |
+        echo "🧪 Starting test suite..."
+        python test-website.py
+        
+    - name: Validate HTML
+      run: |
+        echo "🔍 Validating HTML structure..."
+        if grep -q "<html>" index.html && grep -q "</html>" index.html; then
+          echo "✅ HTML structure is valid"
+        else
+          echo "❌ HTML structure is invalid"
+          exit 1
+        fi
+
+  # DEPLOYMENT STAGE - Only runs if tests pass!
+  deploy:
+    # This job ONLY runs if the testing job succeeds
+    needs: automated-testing
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: '.'
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
+      
+    - name: Show deployment URL
+      run: |
+        echo "🎉 Your website is now LIVE at:"
+        echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+        echo ""
+        echo "📊 Deployment details:"
+        echo "Job: ${{ github.job }}"
+        echo "URL: ${{ steps.deployment.outputs.page_url }}"
+
+  # SUCCESS NOTIFICATION - Final celebration!
+  success:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Celebrate deployment!
+      run: |
+        echo "🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉"
+        echo "🚀 WEBSITE SUCCESSFULLY DEPLOYED! 🚀"
+        echo "🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉"
+        echo ""
+        echo "Your changes are now LIVE on the internet!"
+        echo "Anyone in the world can visit your website!"
+        echo ""
+        echo "Next: Check your repository Settings -> Pages"
+        echo "to find your live website URL!"
