@@ -77,11 +77,11 @@ jobs:
     - name: Show deployment URL
       run: |
         echo "🎉 Your website is now LIVE at:"
-        echo "https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}/"
+        echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
         echo ""
         echo "📊 Deployment details:"
-        echo "Environment: ${{ job.environment.name }}"
-        echo "URL: ${{ job.environment.url }}"
+        echo "Environment: github-pages"
+        echo "URL: ${{ steps.deployment.outputs.page_url }}"
 
   # SUCCESS NOTIFICATION - Final celebration!
   success:
