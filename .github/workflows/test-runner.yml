@@ -21,10 +21,11 @@ jobs:
       uses: actions/checkout@v4
       
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.9'
-        
+        python-version: '3.10'
+        cache: 'pip'
+
     - name: Show portfolio structure
       run: |
         echo "📁 Portfolio Website Structure:"
@@ -65,6 +66,13 @@ jobs:
           fi
         done
 
+    - name: Upload test artifacts (optional)
+      uses: actions/upload-artifact@v4
+      with:
+        name: portfolio-test-results
+        path: .
+        retention-days: 3
+
   deploy-portfolio:
     needs: test-portfolio
     runs-on: ubuntu-latest
@@ -78,16 +86,16 @@ jobs:
       uses: actions/checkout@v4
       
     - name: Setup GitHub Pages
-      uses: actions/configure-pages@v3
+      uses: actions/configure-pages@v4
       
     - name: Upload portfolio to Pages
-      uses: actions/upload-pages-artifact@v2
+      uses: actions/upload-pages-artifact@v3
       with:
         path: '.'
         
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v2
+      uses: actions/deploy-pages@v4
       
     - name: Show portfolio URL
       run: |
@@ -103,12 +111,9 @@ jobs:
     steps:
     - name: Portfolio deployment complete!
       run: |
-        echo "🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉"
-        echo "🚀 PORTFOLIO CI/CD SUCCESS! 🚀"
-        echo "🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉"
+        echo "🎉 🎉 🎉 CI/CD SUCCESS 🎉 🎉 🎉"
         echo ""
         echo "✅ Your portfolio is automatically tested"
         echo "✅ Your portfolio is automatically deployed" 
-        echo "✅ Professional CI/CD pipeline active"
         echo ""
         echo "Visit: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
