@@ -34,16 +34,11 @@ jobs:
         echo "📄 File details:"
         find . -name "*.html" -o -name "*.md" -o -name "*.py" | head -10
         
-    - name: Run basic website test
+    - name: Run automated tests
       run: |
-        echo "🧪 Checking if index.html exists..."
-        if [ -f "index.html" ]; then
-          echo "✅ index.html found!"
-        else
-          echo "❌ index.html is missing!"
-          exit 1
-        fi
-
+        echo "🧪 Starting test suite..."
+        python test-website.py
+        
     - name: Validate HTML
       run: |
         echo "🔍 Validating HTML structure..."
@@ -82,11 +77,11 @@ jobs:
     - name: Show deployment URL
       run: |
         echo "🎉 Your website is now LIVE at:"
-        echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+        echo "https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}/"
         echo ""
         echo "📊 Deployment details:"
-        echo "Job: ${{ github.job }}"
-        echo "URL: ${{ steps.deployment.outputs.page_url }}"
+        echo "Environment: ${{ job.environment.name }}"
+        echo "URL: ${{ job.environment.url }}"
 
   # SUCCESS NOTIFICATION - Final celebration!
   success:
