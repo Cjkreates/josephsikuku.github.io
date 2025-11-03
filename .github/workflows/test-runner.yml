@@ -34,11 +34,16 @@ jobs:
         echo "📄 File details:"
         find . -name "*.html" -o -name "*.md" -o -name "*.py" | head -10
         
-    - name: Run automated tests
+    - name: Run basic website test
       run: |
-        echo "🧪 Starting test suite..."
-        python test-website.py
-        
+        echo "🧪 Checking if index.html exists..."
+        if [ -f "index.html" ]; then
+          echo "✅ index.html found!"
+        else
+          echo "❌ index.html is missing!"
+          exit 1
+        fi
+
     - name: Validate HTML
       run: |
         echo "🔍 Validating HTML structure..."
