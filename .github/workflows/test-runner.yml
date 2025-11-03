@@ -92,7 +92,7 @@ jobs:
     - name: Show portfolio URL
       run: |
         echo "🎉 Portfolio Successfully Deployed!"
-        echo "🌐 Live at: https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}/"
+        echo "🌐 Live at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
         echo ""
         echo "📊 This is your PERSONAL PORTFOLIO website!"
         echo "   It updates automatically with every change!"
@@ -111,4 +111,4 @@ jobs:
         echo "✅ Your portfolio is automatically deployed" 
         echo "✅ Professional CI/CD pipeline active"
         echo ""
-        echo "Visit: https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}/"
+        echo "Visit: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
