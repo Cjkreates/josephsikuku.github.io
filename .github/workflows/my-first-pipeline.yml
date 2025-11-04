@@ -29,7 +29,8 @@ jobs:
     - name: Setup Development Environment
       run: |
         echo "🏗️ Setting up DEVELOPMENT environment..."
-        DEPLOY_ENV=development python environment-setup.py
+        DEPLOY_ENV=development configs/environment-setup.py
+
         
     - name: Run Development Tests
       run: |
@@ -60,7 +61,8 @@ jobs:
     - name: Setup Staging Environment
       run: |
         echo "🧪 Setting up STAGING environment..."
-        DEPLOY_ENV=staging python environment-setup.py
+        DEPLOY_ENV=staging configs/environment-setup.py
+
         
     - name: Run Comprehensive Tests
       run: |
