@@ -111,7 +111,13 @@ jobs:
         echo "🐳 Building production Docker image..."
         docker build -t portfolio-prod .
         echo "✅ Production container ready!"
-        
+    
+    - name: Upload static site to artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+       path: .   # or change to folder where final website files are stored
+
+
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
       
