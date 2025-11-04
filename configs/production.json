@@ -1,0 +1,9 @@
+{
+  "environment": "production",
+  "api_url": "https://api.example.com",
+  "debug": false,
+  "features": {
+    "new_ui": false,
+    "experimental": false
+  }
+}

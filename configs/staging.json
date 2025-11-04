@@ -1,0 +1,9 @@
+{
+  "environment": "staging", 
+  "api_url": "https://staging-api.example.com",
+  "debug": true,
+  "features": {
+    "new_ui": true,
+    "experimental": false
+  }
+}

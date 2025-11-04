@@ -659,7 +659,50 @@
   <!-- NOTE: Analytics should be loaded after cookie consent.
        If you want to include GA, replace G-XXXXXXXX with your ID and consider respecting consent. -->
   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script> -->
+
+
+
   <!-- <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXX'); </script> -->
+    <!-- Environment Info Section -->
+    <section id="environment-info" style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px;">
+        <h2>🚀 Deployment Environment</h2>
+        <div id="env-display">
+            <p><strong>Status:</strong> <span id="env-status">Loading...</span></p>
+            <p><strong>Environment:</strong> <span id="env-name">Loading...</span></p>
+            <p><strong>Last Deployed:</strong> <span id="env-deployed">Loading...</span></p>
+            <p><em>This shows multi-environment deployment in action!</em></p>
+        </div>
+    </section>
+
+    <script>
+        // Load and display environment information
+        fetch('environment-info.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('env-name').textContent = data.environment.toUpperCase();
+                document.getElementById('env-deployed').textContent = new Date().toLocaleString();
+                
+                const statusElement = document.getElementById('env-status');
+                if (data.environment === 'production') {
+                    statusElement.innerHTML = '<span style="color: green;">● PRODUCTION</span>';
+                    statusElement.innerHTML += ' - Live and stable!';
+                } else if (data.environment === 'staging') {
+                    statusElement.innerHTML = '<span style="color: orange;">● STAGING</span>';
+                    statusElement.innerHTML += ' - Testing environment';
+                } else {
+                    statusElement.innerHTML = '<span style="color: blue;">● DEVELOPMENT</span>';
+                    statusElement.innerHTML += ' - Active development';
+                }
+            })
+            .catch(error => {
+                console.log('Environment info not available:', error);
+                document.getElementById('env-name').textContent = 'LOCAL DEVELOPMENT';
+                document.getElementById('env-status').innerHTML = '<span style="color: gray;">● LOCAL</span>';
+                document.getElementById('env-deployed').textContent = 'Not deployed';
+            });
+    </script>
+
+
 </body>
 </html>
 < ! - -   A u t o - d e p l o y e d   v i a   C I / C D   - - > 
