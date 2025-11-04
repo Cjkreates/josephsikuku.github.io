@@ -19,7 +19,7 @@ jobs:
   # DEVELOPMENT ENVIRONMENT - Runs on every push
   development:
     runs-on: ubuntu-latest
-    environment: development
+    # environment: development  # disabled to avoid validation error; enable only if the 'development' environment exists in repo settings
     if: github.ref == 'refs/heads/develop' || github.event_name == 'pull_request'
     
     steps:
@@ -50,7 +50,7 @@ jobs:
   # STAGING ENVIRONMENT - Runs on main branch
   staging:
     runs-on: ubuntu-latest
-    environment: staging
+    # environment: staging  # disabled to avoid validation error; enable only if the 'staging' environment exists in repo settings
     if: github.ref == 'refs/heads/main'
     
     steps:
@@ -87,7 +87,7 @@ jobs:
   # PRODUCTION DEPLOYMENT - Manual approval required
   production:
     runs-on: ubuntu-latest
-    environment: production
+    # environment: production  # disabled to avoid validation error; enable only if the 'production' environment exists in repo settings
     needs: staging
     if: github.ref == 'refs/heads/main'
     
@@ -98,7 +98,8 @@ jobs:
     - name: Setup Production Environment
       run: |
         echo "🚀 Setting up PRODUCTION environment..."
-        DEPLOY_ENV=production python environment-setup.py
+        DEPLOY_ENV=production python configs/environment-setup.py
+
         
     - name: Production Security Scan
       run: |
@@ -124,7 +125,7 @@ jobs:
         echo "📊 Deployment Details:"
         echo "   Environment: PRODUCTION"
         echo "   Status: ✅ LIVE"
-        echo "   URL: https://${{ github.repository_owner }}.github.io/${{ github.repository_name }}/"
+        echo "   URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
         echo ""
         echo "🚀 Professional multi-environment pipeline ACTIVE!"
         echo "💼 Enterprise-grade DevOps demonstrated!"
