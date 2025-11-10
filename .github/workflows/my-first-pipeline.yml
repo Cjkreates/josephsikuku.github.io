@@ -55,7 +55,7 @@ jobs:
     - name: Test Terraform configuration
       run: |
         echo "🏗️ Testing infrastructure code..."
-        python test-terraform.py
+        python terraform/test-terraform.py
 
   staging:
     runs-on: ubuntu-latest
