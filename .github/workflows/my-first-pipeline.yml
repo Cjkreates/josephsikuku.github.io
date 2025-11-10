@@ -55,7 +55,7 @@ jobs:
     - name: Test Terraform configuration
       run: |
         echo "🏗️ Testing infrastructure code..."
-        python terraform/test-terraform.py
+        python terraform/test-terraform.py   # ✅ fixed path
 
   staging:
     runs-on: ubuntu-latest
@@ -104,7 +104,10 @@ jobs:
         
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
-      
+      with:
+        branch: gh-pages     # branch to deploy to
+        folder: ./           # deploy root folder; change if your site is in a subfolder
+        
     - name: Production observability active
       run: |
         echo "🎉 🎉 🎉 PRODUCTION WITH OBSERVABILITY! 🎉 🎉 🎉"
