@@ -69,7 +69,7 @@ jobs:
     - name: Setup Staging Environment
       run: |
         echo "🧪 Setting up STAGING environment..."
-        DEPLOY_ENV=staging python environment-setup.py
+        DEPLOY_ENV=staging python configs/environment-setup.py
         
     - name: Run staging monitoring
       run: |
