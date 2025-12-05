@@ -1,444 +1,153 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Sikuku Joseph - IT Analyst, Network Specialist & AI Developer." />
-  <meta name="keywords" content="Sikuku Joseph, IT Analyst, Network Support, Kenya, CCNA, AI Developer" />
-  <meta name="author" content="Sikuku Joseph" />
-  <meta property="og:title" content="Sikuku Joseph | IT Analyst Portfolio">
-  <meta property="og:description" content="Bridging Network Infrastructure and AI Multimedia.">
-  <meta property="og:type" content="website">
-  
-  <title>Sikuku Joseph | IT Analyst & AI Dev</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* --- CSS VARIABLES --- */
-    :root {
-      --primary: #3b82f6;
-      --primary-hover: #2563eb;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #334155;
-      --text-light: #64748b;
-      --heading: #1e293b;
-      --border: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --nav-height: 70px;
-    }
-
-    [data-theme='dark'] {
-      --primary: #60a5fa;
-      --primary-hover: #3b82f6;
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --text: #cbd5e1;
-      --text-light: #94a3b8;
-      --heading: #f1f5f9;
-      --border: #334155;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-    }
-
-    /* --- RESET & BASE --- */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
-      padding-top: var(--nav-height); /* Prevent nav overlap */
-    }
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
-
-    /* --- TYPOGRAPHY --- */
-    h1, h2, h3 { color: var(--heading); font-weight: 700; }
-    h2 { font-size: 2rem; margin-bottom: 2rem; position: relative; display: inline-block; }
-    h2::after {
-      content: ''; display: block; width: 50%; height: 4px; 
-      background: var(--primary); margin-top: 0.5rem; border-radius: 2px;
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-    section { padding: 4rem 0; }
-
-    /* --- NAVIGATION --- */
-    nav {
-      position: fixed; top: 0; left: 0; width: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      height: var(--nav-height);
-      display: flex; align-items: center;
-    }
-    [data-theme='dark'] nav { background: rgba(15, 23, 42, 0.9); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Sikuku Joseph - IT Analyst & DevOps Specialist.">
     
-    .nav-container {
-      display: flex; justify-content: space-between; align-items: center; width: 100%;
-    }
-    .logo { font-size: 1.5rem; font-weight: 700; color: var(--heading); }
-    .logo span { color: var(--primary); }
+    <title>Sikuku Joseph | IT Analyst & AI Dev</title>
     
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { font-weight: 500; color: var(--heading); }
-    .nav-links a:hover { color: var(--primary); }
-
-    .theme-toggle {
-      background: none; border: none; cursor: pointer; color: var(--heading); font-size: 1.2rem;
-    }
-
-    /* --- HERO SECTION --- */
-    .hero {
-      text-align: center; padding: 6rem 0 4rem;
-      display: flex; flex-direction: column; align-items: center;
-    }
-    .hero h1 { font-size: 3rem; margin-bottom: 1rem; line-height: 1.2; }
-    .hero p { font-size: 1.25rem; color: var(--text-light); max-width: 600px; margin-bottom: 2rem; }
-    .btn {
-      display: inline-block; padding: 0.8rem 1.5rem;
-      background: var(--primary); color: white; border-radius: 8px; font-weight: 600;
-      box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
-    }
-    .btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
-    .btn-secondary { background: var(--card-bg); color: var(--text); border: 1px solid var(--border); }
-    .btn-secondary:hover { background: var(--primary-hover); color: white; }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    .social-links { margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center; }
-    .social-links a { font-size: 1.5rem; color: var(--text-light); }
-    .social-links a:hover { color: var(--primary); transform: scale(1.1); }
-
-    /* --- EXPERIENCE (TIMELINE) --- */
-    .timeline { border-left: 3px solid var(--border); padding-left: 2rem; margin-left: 1rem; }
-    .timeline-item { position: relative; margin-bottom: 2.5rem; }
-    .timeline-item::before {
-      content: ''; position: absolute; left: -2.6rem; top: 5px;
-      width: 1rem; height: 1rem; background: var(--primary); border-radius: 50%;
-      border: 3px solid var(--bg);
-    }
-    .timeline-date { font-size: 0.9rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; display: block; }
-    .timeline-content h3 { margin-bottom: 0.5rem; }
-    .timeline-content h4 { font-size: 1rem; color: var(--text-light); margin-bottom: 1rem; font-weight: 500; }
-
-    /* --- SKILLS & CERTS (GRID) --- */
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .skill-card {
-      background: var(--card-bg); padding: 1.5rem; border-radius: 12px;
-      border: 1px solid var(--border); box-shadow: var(--shadow);
-    }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-    .tag {
-      background: rgba(59, 130, 246, 0.1); color: var(--primary);
-      padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 500;
-    }
-
-    .cert-link {
-      display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .cert-link:last-child { border-bottom: none; }
-    .cert-link i { color: #10b981; } /* Green check */
-
-    /* --- PROJECTS --- */
-    .project-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;
-    }
-    .project-card {
-      background: var(--card-bg); border-radius: 12px; overflow: hidden;
-      border: 1px solid var(--border); box-shadow: var(--shadow);
-      transition: transform 0.3s ease; display: flex; flex-direction: column;
-    }
-    .project-card:hover { transform: translateY(-5px); }
-    .project-img {
-      height: 160px; background: var(--border); display: flex;
-      align-items: center; justify-content: center; color: var(--text-light);
-      font-size: 3rem;
-    }
-    .project-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-    .project-content h4 { margin-bottom: 0.5rem; font-size: 1.2rem; }
-    .project-content p { font-size: 0.95rem; color: var(--text-light); margin-bottom: 1rem; flex-grow: 1; }
-    .repo-link { font-size: 0.9rem; color: var(--primary); font-weight: 600; }
-
-    /* --- CONTACT --- */
-    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-    .contact-info p { margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
-    .contact-info i { color: var(--primary); width: 20px; }
-    
-    form input, form textarea {
-      width: 100%; padding: 1rem; margin-bottom: 1rem;
-      background: var(--bg); border: 1px solid var(--border);
-      border-radius: 8px; color: var(--text); font-family: inherit;
-    }
-    form input:focus, form textarea:focus { outline: 2px solid var(--primary); border-color: transparent; }
-
-    /* --- FOOTER --- */
-    footer {
-      background: var(--card-bg); border-top: 1px solid var(--border);
-      text-align: center; padding: 2rem; margin-top: 4rem; color: var(--text-light);
-    }
-
-    /* --- MOBILE RESPONSIVE --- */
-    @media (max-width: 768px) {
-      .nav-links { display: none; } /* Add JS hamburger toggle if needed, kept simple for now */
-      .contact-wrapper { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2.2rem; }
-    }
-    
-    .visible { opacity: 1; transform: translateY(0); }
-
-    /* --- BUTTON GROUP --- */
-    .button-group { display: flex; gap: 10px; }
-    .btn-submit { width: 100%; border: none; cursor: pointer; }
-    /* --- UTILITY CLASSES --- */
-    .margin-top-1 { margin-top: 1rem; }
-    .font-weight-600 { font-weight: 600; }
-    .flex-center { display: flex; align-items: center; gap: 1rem; }
-    .margin-top-1rem-font-600 { margin-top: 1rem; font-weight: 600; }
-  </style>
-    .visible { opacity: 1; transform: translateY(0); }
-  </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <nav>
-    <div class="container nav-container">
-      <div class="logo">Sikuku<span>.Dev</span></div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <button class="theme-toggle" id="toggle-theme" aria-label="Toggle Dark Mode">
-        <i class="fas fa-moon"></i>
-      </button>
-    </div>
-  </nav>
-      <div class="button-group">
-        <a href="joseph_sikuku_resume.pdf" class="btn" download>
-          <i class="fas fa-download"></i> Download Resume
-        </a>
-        <a href="#contact" class="btn btn-secondary">
-          Let's Talk
-        </a>
-      </div>
-        </a>
-        <a href="#contact" class="btn btn-secondary">
-          Let's Talk
-        </a>
-      </div>
-      <div class="social-links">
-        <a href="https://linkedin.com/in/joseph-sikuku" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Cjkreates" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="mailto:josesikuku17@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-      </div>
-    </section>
-
-    <section id="about" class="container fade-in">
-      <h2>About Me</h2>
-      <p>I’m a dedicated and adaptable IT Analyst with hands-on experience in technical support, network configuration, and AI multimedia development. I blend creative problem-solving with technical expertise to drive efficiency and user satisfaction. My mission is to deliver practical IT solutions that align with modern digital trends and organizational goals.</p>
-    </section>
-
-    <section id="experience" class="container fade-in">
-      <h2>Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <span class="timeline-date">May 2025 – Present</span>
-          <div class="timeline-content">
-            <h3>IT & Network Support</h3>
-            <h4>Bank of India Kenya</h4>
-            <p>Providing real-time IT/network support for core banking systems. Managing user accounts, VLANs, and LAN/WAN troubleshooting.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-date">Oct 2024 – Nov 2024</span>
-          <div class="timeline-content">
-            <h3>AI Video Project Developer</h3>
-            <h4>ALX</h4>
-            <p>Leveraged OpenAI, Midjourney, and CapCut to create AI-generated visual content for TikTok & YouTube.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-date">July 2023 – Sept 2023</span>
-          <div class="timeline-content">
-            <h3>IT Support Technician</h3>
-            <h4>Autocomm Computers</h4>
-            <p>Hardware repair, OS installation, LAN setups, and inventory management.</p>
-          </div>
-        </div>
-        <div class="skill-card">
-          <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
-          <p class="margin-top-1 font-weight-600">Networking & Security</p>
-    <section id="skills" class="container fade-in">
-      <div class="grid-2">
-          <p class="margin-top-1rem-font-600">Networking & Security</p>
-          <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
-          <p class="margin-top-1rem-font-600">Networking & Security</p>
-          <p class="margin-top-1rem-font-600">Networking & Security</p>
-            <span class="tag">CCNA</span>
-            <span class="tag">Wireshark</span>
-          <p class="margin-top-1 font-weight-600">Tools & Creative</p>
-            <span class="tag">Cisco Packet Tracer</span>
-            <span class="tag">Kali Linux</span>
-          <p class="margin-top-1rem-font-600">Tools & Creative</p>
-          </div>
-          <p class="margin-top-1rem-font-600">Tools & Creative</p>
-          <p class="margin-top-1rem-font-600">Tools & Creative</p>
-            <span class="tag">Windows Server</span>
-            <span class="tag">Visio</span>
-            <span class="tag">Jira</span>
-            <span class="tag">Midjourney</span>
-        <div class="skill-card">
-          <h3><i class="fas fa-certificate"></i> Certifications & Education</h3>
-          <div class="margin-top-1">
-        </div>
-
-          <div class="margin-top-1">
-          <h3><i class="fas fa-certificate"></i> Certifications & Education</h3>
-          <div class="margin-top-1">
-              <i class="fas fa-check-circle"></i>
-              <div>
-                <strong>CCNA Certification</strong><br>
-                <small>Kenyatta University (2024)</small>
-              </div>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">Sikuku<span class="text-gradient">.Dev</span></a>
+            
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="portfolio-showcase.html" style="color: var(--secondary)">DevOps Case Study</a>
+                <a href="#contact">Contact</a>
             </div>
-            <div class="cert-link">
-              <i class="fas fa-check-circle"></i>
-              <div>
-                <strong>AI Augmented Skills</strong><br>
-                <small>ALX (2024)</small>
-              </div>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
             </div>
-            <div class="cert-link">
-              <i class="fas fa-check-circle"></i>
-              <div>
-                <strong>Diploma in ICT</strong><br>
-                <small>Rift Valley Inst. of Business Studies</small>
-              </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero container animate-on-scroll">
+            <h1>Bridging <span class="text-gradient">Network Infrastructure</span><br>and AI Innovation</h1>
+            <p>IT Analyst with 4+ years of experience in Network Support, System Administration, and AI-driven automation.</p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="#contact" class="btn btn-primary">Let's Talk <i class="fas fa-arrow-right"></i></a>
+                <a href="joseph_sikuku_resume.pdf" class="btn btn-outline" download><i class="fas fa-download"></i> Resume</a>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="projects" class="container fade-in">
-      <h2>Featured Projects</h2>
-      <div class="project-grid" id="project-container">
-        
-        <div class="project-card">
-          <div class="project-img"><i class="fas fa-network-wired"></i></div>
-          <div class="project-content">
-            <h4>Enterprise Network Simulation</h4>
-            <p>Designed a secure LAN/WAN infrastructure using Cisco Packet Tracer including VLANs, OSPF routing, and ACL security policies.</p>
-            <span class="tag">Cisco</span> <span class="tag">Networking</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-img"><i class="fas fa-robot"></i></div>
-          <div class="project-content">
-            <h4>AI Content Automation</h4>
-            <p>A workflow automating video creation using Gen-AI tools, reducing production time by 40%.</p>
-            <span class="tag">AI</span> <span class="tag">Python</span>
-          </div>
-        </div>
-
-        </div>
-    </section>
-
-    <section id="contact" class="container fade-in">
-      <h2>Get In Touch</h2>
-      <div class="contact-wrapper">
-        <div class="contact-info">
-          <p>I am currently available for freelance projects or full-time opportunities in Network Administration or IT Analysis.</p>
-          <p><i class="fas fa-envelope"></i> josesikuku17@gmail.com</p>
-          <p><i class="fas fa-phone"></i> +254 794 850 094</p>
-          <p><i class="fab fa-linkedin"></i> linkedin.com/in/joseph-sikuku</p>
-          <p><i class="fas fa-map-marker-alt"></i> Nairobi / Nakuru, Kenya</p>
-          <input type="hidden" name="_subject" value="New Portfolio Contact!">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <textarea name="message" rows="5" placeholder="How can I help you?" required></textarea>
-          <button type="submit" class="btn btn-submit">Send Message</button>
-          <textarea name="message" rows="5" placeholder="How can I help you?" required></textarea>
-          <button type="submit" class="btn btn-submit">Send Message</button>
-          <button type="submit" class="btn btn-submit">Send Message</button>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; <span id="year"></span> Sikuku Joseph. Built with standard web technologies.</p>
-    </div>
-  </footer>
-
-  <script>
-    // 1. Dynamic Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // 2. Theme Toggle Logic
-    const toggleBtn = document.getElementById("toggle-theme");
-    const icon = toggleBtn.querySelector('i');
-    
-    // Check saved theme or system preference
-    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute("data-theme", savedTheme);
-    updateIcon(savedTheme);
-
-    toggleBtn.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme");
-      const next = current === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem('theme', next);
-      updateIcon(next);
-    });
-
-    function updateIcon(theme) {
-      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
-
-    // 3. GitHub API Integration
-    const projectContainer = document.getElementById("project-container");
-    
-    fetch("https://api.github.com/users/Cjkreates/repos?sort=updated&per_page=3")
-      .then(res => res.json())
-      .then(data => {
-        data.forEach(repo => {
-          // Skip if it's a fork or has no description (optional filtering)
-          const div = document.createElement("div");
-          div.className = "project-card";
-          div.innerHTML = `
-            <div class="project-img"><i class="fab fa-github"></i></div>
-            <div class="project-content">
-              <h4>${repo.name}</h4>
-              <p>${repo.description ? repo.description.substring(0, 80) + '...' : "Check out the code on GitHub."}</p>
-              <a href="${repo.html_url}" target="_blank" class="repo-link">View Repository &rarr;</a>
+            <div style="margin-top: 3rem; display: flex; gap: 1.5rem; justify-content: center; font-size: 1.5rem; color: var(--text-muted);">
+                <a href="https://linkedin.com/in/joseph-sikuku" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Cjkreates" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:josesikuku17@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
-          `;
-          projectContainer.appendChild(div);
-        });
-      })
-      .catch(err => console.error("GitHub fetch failed", err));
+        </section>
 
-    // 4. Scroll Reveal Animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
+        <section id="experience" class="container section-padding animate-on-scroll">
+            <h2 style="margin-bottom: 3rem;">Professional Experience</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <span style="color: var(--primary); font-weight: 600; font-size: 0.9rem;">May 2025 – Present</span>
+                    <h3>IT & Network Support</h3>
+                    <h4 style="color: var(--text-muted); margin-bottom: 0.5rem;">Bank of India Kenya</h4>
+                    <p>Managing core banking systems, VLAN configurations, and real-time network troubleshooting for enterprise infrastructure.</p>
+                </div>
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
+                <div class="timeline-item">
+                    <span style="color: var(--primary); font-weight: 600; font-size: 0.9rem;">Oct 2024 – Nov 2024</span>
+                    <h3>AI Video Project Developer</h3>
+                    <h4 style="color: var(--text-muted); margin-bottom: 0.5rem;">ALX</h4>
+                    <p>Developed automated workflows using OpenAI & Midjourney APIs to streamline video content creation.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <span style="color: var(--primary); font-weight: 600; font-size: 0.9rem;">July 2023 – Sept 2023</span>
+                    <h3>IT Support Technician</h3>
+                    <h4 style="color: var(--text-muted); margin-bottom: 0.5rem;">Autocomm Computers</h4>
+                    <p>Hardware diagnostics, OS deployment, and LAN setup for SME clients.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects" class="container section-padding animate-on-scroll">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
+                <h2>Featured Projects</h2>
+                <a href="projects.html" class="btn btn-outline" style="font-size: 0.9rem;">View All Projects</a>
+            </div>
+
+            <div class="grid-3">
+                
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-infinity"></i></div>
+                    <h3>DevOps CI/CD Pipeline</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">A complete end-to-end pipeline implementation using Docker, Jenkins, and GitHub Actions.</p>
+                    <div class="tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">CI/CD</span>
+                        <span class="tag">Terraform</span>
+                    </div>
+                    <a href="portfolio-showcase.html" style="display: block; margin-top: 1.5rem; color: var(--primary); font-weight: 600;">View Case Study &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Enterprise Network Sim</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Designed a secure LAN/WAN infrastructure using Cisco Packet Tracer with OSPF routing.</p>
+                    <div class="tags">
+                        <span class="tag">Cisco</span>
+                        <span class="tag">Networking</span>
+                        <span class="tag">VLAN</span>
+                    </div>
+                    <a href="#" style="display: block; margin-top: 1.5rem; color: var(--primary); font-weight: 600;">View Details &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI Content Automation</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Python workflow automating video creation, reducing production time by 40%.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">OpenAI API</span>
+                    </div>
+                    <a href="https://github.com/Cjkreates" target="_blank" style="display: block; margin-top: 1.5rem; color: var(--primary); font-weight: 600;">View Code &rarr;</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="container section-padding animate-on-scroll">
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div class="card">
+                    <h2 style="text-align: center; margin-bottom: 1.5rem;">Get In Touch</h2>
+                    <form action="thank-you.html">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea rows="5" placeholder="How can I help you?" required></textarea>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Sikuku Joseph. Built with optimized HTML5 & CSS3.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
