@@ -53,22 +53,8 @@
             position: relative;
         }
         
-        .article-category {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: var(--primary);
-            color: white;
-            font-size: 0.7rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
         /* Animation class for filtering */
         .blog-item { transition: opacity 0.3s ease, transform 0.3s ease; }
-        .blog-item.hidden { display: none; }
     </style>
 </head>
 <body>
@@ -114,6 +100,7 @@
 
         </section>
     </main>
+    
     <footer>
         <div class="container">
             <p>&copy; <span id="year"></span> Sikuku Joseph. <a href="index.html" style="color: var(--primary);">Back to Home</a></p>
@@ -123,112 +110,132 @@
     <script src="main.js"></script>
     
     <script>
+        const container = document.getElementById('blog-container');
         const pills = document.querySelectorAll('.filter-pill');
-        const posts = document.querySelectorAll('.blog-item');
 
-        pills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                // Remove active class from all
-                pills.forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
+        // --- 1. BACKUP DATA (Loads if API fails) ---
+        const fallbackData = [
+            {
+                title: "DevOps Best Practices for 2025",
+                description: "A deep dive into how CI/CD pipelines are evolving with AI integration. Learn about the latest tools in the ecosystem.",
+                url: "#",
+                cover_image: null,
+                published_at: new Date().toISOString(),
+                reading_time_minutes: 5,
+                tag_list: ["devops"]
+            },
+            {
+                title: "Understanding VLANs and Subnetting",
+                description: "Breaking down complex network segmentation into simple concepts. A guide for new Network Engineers.",
+                url: "#",
+                cover_image: null,
+                published_at: new Date().toISOString(),
+                reading_time_minutes: 8,
+                tag_list: ["networking"]
+            },
+            {
+                title: "Python for Automation",
+                description: "How to automate boring IT tasks using simple Python scripts. Save time and reduce errors.",
+                url: "#",
+                cover_image: null,
+                published_at: new Date().toISOString(),
+                reading_time_minutes: 4,
+                tag_list: ["automation"]
+            }
+        ];
 
-                const filter = pill.getAttribute('data-filter');
+        // --- 2. MAIN FETCH FUNCTION ---
+        async function fetchNews(tag) {
+            // UI: Handle Active Button State
+            pills.forEach(p => p.classList.remove('active'));
+            
+            // Logic to handle click vs initial load
+            if (window.event && window.event.type === 'click') {
+                window.event.target.classList.add('active');
+            } else {
+                // Find the button that matches the tag
+                const btn = Array.from(pills).find(b => b.innerText.toLowerCase().includes(tag.replace('webdev', 'web')));
+                if(btn) btn.classList.add('active');
+            }
 
-                posts.forEach(post => {
-                    if (filter === 'all' || post.getAttribute('data-category') === filter) {
-                        post.classList.remove('hidden');
-                        // Add slight fade in
-                        post.style.opacity = '0';
-                        setTimeout(() => post.style.opacity = '1', 50);
-                    } else {
-                        post.classList.add('hidden');
-                    }
+            // UI: Show Loading Spinner
+            container.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--text-muted);">
+                    <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                    <p style="margin-top: 1rem;">Fetching latest ${tag} news...</p>
+                </div>
+            `;
+
+            try {
+                // Attempt Fetch with a 3-second timeout
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 3000);
+
+                const response = await fetch(`https://dev.to/api/articles?tag=${tag}&top=7&per_page=6`, {
+                    signal: controller.signal
                 });
-            });
-        });
-    </script>
-<script>
-    const container = document.getElementById('blog-container');
-    const pills = document.querySelectorAll('.filter-pill');
+                clearTimeout(timeoutId);
 
-    // 1. Function to Fetch and Render News
-    async function fetchNews(tag) {
-        // Update UI: Set active pill
-        pills.forEach(p => p.classList.remove('active'));
-        event ? event.target.classList.add('active') : pills[0].classList.add('active'); // specific logic for click vs load
+                if (!response.ok) throw new Error("API Limit or Network Error");
+                
+                const articles = await response.json();
+                
+                if (articles.length === 0) throw new Error("No articles found");
 
-        // Show Loading Spinner
-        container.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">
-                <i class="fas fa-circle-notch fa-spin fa-2x"></i><br><br>Fetching latest ${tag} news...
-            </div>
-        `;
+                renderArticles(articles, tag);
 
-        try {
-            // Fetch from Dev.to API (Top articles for the week)
-            const response = await fetch(`https://dev.to/api/articles?tag=${tag}&top=7&per_page=6`);
-            const articles = await response.json();
+            } catch (error) {
+                console.warn("API failed or timed out, loading fallback data.", error);
+                renderArticles(fallbackData, tag);
+            }
+        }
 
-            // Clear Loading Spinner
-            container.innerHTML = '';
+        // --- 3. RENDER FUNCTION ---
+        function renderArticles(articles, tag) {
+            container.innerHTML = ''; // Clear spinner
 
-            // Render Articles
             articles.forEach(article => {
                 // Format Date
-                const date = new Date(article.published_at).toLocaleDateString('en-US', {
-                    month: 'short', day: 'numeric', year: 'numeric'
-                });
+                const dateStr = article.published_at ? new Date(article.published_at).toLocaleDateString('en-US', {
+                    month: 'short', day: 'numeric'
+                }) : 'Recently';
 
-                // Fallback image if the article doesn't have a cover image
+                // Handle Missing Image
                 const imageHTML = article.cover_image 
                     ? `<img src="${article.cover_image}" alt="${article.title}" style="width: 100%; height: 180px; object-fit: cover;">`
                     : `<div class="article-placeholder"><i class="fas fa-newspaper"></i></div>`;
 
-                // Create Card HTML
+                // Create Card
                 const card = document.createElement('article');
                 card.className = 'card blog-item animate-on-scroll';
-                
-                // Use your existing styles
                 card.innerHTML = `
-                    <div style="margin: -2rem -2rem 1.5rem -2rem; overflow: hidden; border-radius: 12px 12px 0 0;">
+                    <div style="margin: -2rem -2rem 1.5rem -2rem; position: relative;">
                         ${imageHTML}
                         <div style="position: absolute; top: 1rem; left: 1rem; background: var(--primary); color: white; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;">
                             ${tag}
                         </div>
                     </div>
                     <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                        <i class="far fa-calendar"></i> ${date} &bull; ${article.reading_time_minutes} min read
+                        <i class="far fa-calendar"></i> ${dateStr} &bull; ${article.reading_time_minutes || 5} min read
                     </div>
-                    <h3 style="margin-bottom: 0.5rem; line-height: 1.3;">
+                    <h3 style="margin-bottom: 0.5rem; line-height: 1.3; font-size: 1.25rem;">
                         <a href="${article.url}" target="_blank" style="transition: color 0.2s;">${article.title}</a>
                     </h3>
                     <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                        ${article.description}
+                        ${article.description || "Click to read the full article..."}
                     </p>
                     <a href="${article.url}" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center;">
-                        Read Full Article <i class="fas fa-external-link-alt" style="margin-left: 8px;"></i>
+                        Read Article <i class="fas fa-external-link-alt" style="margin-left: 8px;"></i>
                     </a>
                 `;
-                
                 container.appendChild(card);
             });
-
-        } catch (error) {
-            console.error('Error fetching news:', error);
-            container.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; color: red;">
-                    <i class="fas fa-exclamation-triangle"></i> Failed to load news. Please try again later.
-                </div>
-            `;
         }
-    }
 
-    // 2. Initial Load
-    document.addEventListener('DOMContentLoaded', () => {
-        // Set the first button as active visually on load
-        pills[0].classList.add('active');
-        fetchNews('devops');
-    });
-</script>    
+        // --- 4. INITIAL LOAD ---
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchNews('devops');
+        });
+    </script>
 </body>
 </html>
