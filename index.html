@@ -71,6 +71,7 @@
     nav {
       position: fixed; top: 0; left: 0; width: 100%;
       background: rgba(255, 255, 255, 0.9);
+      -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       z-index: 1000;
@@ -106,6 +107,8 @@
       box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
     }
     .btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
+    .btn-secondary { background: var(--card-bg); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: var(--primary-hover); color: white; }
     
     .social-links { margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center; }
     .social-links a { font-size: 1.5rem; color: var(--text-light); }
@@ -187,8 +190,17 @@
       .hero h1 { font-size: 2.2rem; }
     }
     
-    /* Animation Utility */
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .visible { opacity: 1; transform: translateY(0); }
+
+    /* --- BUTTON GROUP --- */
+    .button-group { display: flex; gap: 10px; }
+    .btn-submit { width: 100%; border: none; cursor: pointer; }
+    /* --- UTILITY CLASSES --- */
+    .margin-top-1 { margin-top: 1rem; }
+    .font-weight-600 { font-weight: 600; }
+    .flex-center { display: flex; align-items: center; gap: 1rem; }
+    .margin-top-1rem-font-600 { margin-top: 1rem; font-weight: 600; }
+  </style>
     .visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
@@ -209,23 +221,23 @@
       </button>
     </div>
   </nav>
-
-  <main>
-    <section class="hero container fade-in">
-      <h1>Hi, I'm Sikuku Joseph</h1>
-      <p>IT Analyst | Network Specialist | AI Multimedia Developer</p>
-      <div style="display:flex; gap:10px;">
+      <div class="button-group">
         <a href="joseph_sikuku_resume.pdf" class="btn" download>
           <i class="fas fa-download"></i> Download Resume
         </a>
-        <a href="#contact" class="btn" style="background:var(--card-bg); color:var(--text); border:1px solid var(--border)">
+        <a href="#contact" class="btn btn-secondary">
+          Let's Talk
+        </a>
+      </div>
+        </a>
+        <a href="#contact" class="btn btn-secondary">
           Let's Talk
         </a>
       </div>
       <div class="social-links">
-        <a href="https://linkedin.com/in/joseph-sikuku" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Cjkreates" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="mailto:josesikuku17@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://linkedin.com/in/joseph-sikuku" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Cjkreates" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="mailto:josesikuku17@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
       </div>
     </section>
 
@@ -261,37 +273,36 @@
             <p>Hardware repair, OS installation, LAN setups, and inventory management.</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="skills" class="container fade-in">
-      <div class="grid-2">
         <div class="skill-card">
           <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
-          <p style="margin-top:1rem; font-weight:600;">Networking & Security</p>
-          <div class="tags">
+          <p class="margin-top-1 font-weight-600">Networking & Security</p>
+    <section id="skills" class="container fade-in">
+      <div class="grid-2">
+          <p class="margin-top-1rem-font-600">Networking & Security</p>
+          <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
+          <p class="margin-top-1rem-font-600">Networking & Security</p>
+          <p class="margin-top-1rem-font-600">Networking & Security</p>
             <span class="tag">CCNA</span>
             <span class="tag">Wireshark</span>
-            <span class="tag">VLANs</span>
+          <p class="margin-top-1 font-weight-600">Tools & Creative</p>
             <span class="tag">Cisco Packet Tracer</span>
             <span class="tag">Kali Linux</span>
-            <span class="tag">Nessus</span>
+          <p class="margin-top-1rem-font-600">Tools & Creative</p>
           </div>
-          <p style="margin-top:1rem; font-weight:600;">Tools & Creative</p>
-          <div class="tags">
+          <p class="margin-top-1rem-font-600">Tools & Creative</p>
+          <p class="margin-top-1rem-font-600">Tools & Creative</p>
             <span class="tag">Windows Server</span>
             <span class="tag">Visio</span>
             <span class="tag">Jira</span>
             <span class="tag">Midjourney</span>
-            <span class="tag">Adobe Illustrator</span>
-            <span class="tag">SQL</span>
-          </div>
-        </div>
-
         <div class="skill-card">
           <h3><i class="fas fa-certificate"></i> Certifications & Education</h3>
-          <div style="margin-top:1rem;">
-            <div class="cert-link">
+          <div class="margin-top-1">
+        </div>
+
+          <div class="margin-top-1">
+          <h3><i class="fas fa-certificate"></i> Certifications & Education</h3>
+          <div class="margin-top-1">
               <i class="fas fa-check-circle"></i>
               <div>
                 <strong>CCNA Certification</strong><br>
@@ -351,15 +362,14 @@
           <p><i class="fas fa-phone"></i> +254 794 850 094</p>
           <p><i class="fab fa-linkedin"></i> linkedin.com/in/joseph-sikuku</p>
           <p><i class="fas fa-map-marker-alt"></i> Nairobi / Nakuru, Kenya</p>
-        </div>
-        
-        <form action="https://formsubmit.co/josesikuku17@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="New Portfolio Contact!">
           <input type="text" name="name" placeholder="Your Name" required>
           <input type="email" name="email" placeholder="Your Email" required>
           <textarea name="message" rows="5" placeholder="How can I help you?" required></textarea>
-          <button type="submit" class="btn" style="width:100%; border:none; cursor:pointer;">Send Message</button>
-        </form>
+          <button type="submit" class="btn btn-submit">Send Message</button>
+          <textarea name="message" rows="5" placeholder="How can I help you?" required></textarea>
+          <button type="submit" class="btn btn-submit">Send Message</button>
+          <button type="submit" class="btn btn-submit">Send Message</button>
       </div>
     </section>
 
