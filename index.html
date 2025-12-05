@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -460,3 +461,741 @@
   </script>
 </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.elastic.co/agents/rum-js/5.x/elastic-apm-rum.umd.min.js" crossorigin></script>
+  <script src="https://cdn.elastic.co/apm/rum/v5/latest/elastic-apm-rum.umd.min.js"></script>
+  <title>Sikuku Joseph | IT Analyst Portfolio</title>
+  <meta name="description" content="Sikuku Joseph — IT Analyst & Network Specialist. Portfolio showcasing network projects, AI multimedia, and support experience based in Nairobi, Kenya." />
+  <meta name="keywords" content="IT Analyst, Network Specialist, CCNA, AI Video, Portfolio, Nairobi" />
+  <meta name="author" content="Sikuku Joseph" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://cjkreates.github.io/josephsikuku.github.io/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Sikuku Joseph | IT Analyst Portfolio" />
+  <meta property="og:description" content="IT Analyst & Network Specialist — network design, enterprise support, and AI-driven multimedia." />
+  <!-- Replace with an actual hosted og image -->
+  <meta property="og:image" content="https://cjkreates.github.io/assets/og-image.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cjkreates.github.io/josephsikuku.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sikuku Joseph | IT Analyst Portfolio" />
+  <meta name="twitter:description" content="IT Analyst & Network Specialist — network design, enterprise support, and AI multimedia." />
+
+  <!-- Favicon (replace /assets/favicon.ico with your file) -->
+  <link rel="icon" href="/assets/favicon.ico" />
+
+  <!-- Schema.org JSON-LD (person) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sikuku Joseph",
+    "url": "https://cjkreates.github.io/josephsikuku.github.io/",
+    "sameAs": [
+      "https://github.com/Cjkreates",
+      "https://www.linkedin.com/in/joseph-sikuku",
+      "https://twitter.com/yourprofile"
+    ],
+    "jobTitle": "IT Analyst",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Bank of India Kenya"
+    }
+  }
+  </script>
+
+  <!-- Optional: preconnect fonts or APIs -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===========================
+       Theme variables (dark-first)
+       =========================== */
+    :root {
+      --bg: #0b0f12;            /* dark background */
+      --card-bg: #0f1720;
+      --text: #e6eef8;
+      --muted: #98a1b3;
+      --accent: #60a5fa;       /* blue-ish accent */
+      --accent-strong: #3b82f6;
+      --header-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      --shadow: rgba(2,6,23,0.6);
+      --glass: rgba(255,255,255,0.02);
+      --radius: 10px;
+    }
+    /* Light theme overrides */
+    [data-theme='light'] {
+      --bg: #f6f7fb;
+      --card-bg: #ffffff;
+      --text: #111827;
+      --muted: #475569;
+      --accent: #2563eb;
+      --accent-strong: #1e40af;
+      --header-bg: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.00));
+      --shadow: rgba(15,23,42,0.08);
+      --glass: rgba(2,6,23,0.02);
+    }
+
+    /* ===========================
+       Base
+       =========================== */
+    * { box-sizing: border-box; }
+    html,body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.75;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition: background .25s ease, color .25s ease;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover, a:focus { text-decoration: underline; outline: none; }
+    main[role="main"] { max-width: 1100px; margin: 0 auto; padding: 1.25rem; }
+
+    /* ===========================
+       Header + Nav (sticky)
+       =========================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.85rem 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display:flex; align-items:center; gap:0.9rem;
+    }
+    .brand .logo {
+      width:48px; height:48px; border-radius:8px; background:linear-gradient(135deg,var(--accent),var(--accent-strong));
+      display:flex; align-items:center; justify-content:center; color:white; font-weight:700; box-shadow: 0 6px 18px var(--shadow);
+      font-size:0.95rem;
+    }
+    .brand h1 { margin:0; font-size:1.05rem; letter-spacing:0.2px; }
+    .brand p { margin:0; font-size:0.8rem; color:var(--muted); }
+
+    /* nav */
+    .nav-links {
+      display:flex; gap:0.5rem; align-items:center;
+    }
+    .nav-links a {
+      display:inline-flex; align-items:center; gap:0.5rem; padding:0.55rem 0.75rem; border-radius:8px;
+      background: transparent; color: var(--text); font-weight:600; font-size:0.95rem;
+    }
+    .nav-links a:hover { background: var(--glass); box-shadow: 0 2px 8px var(--shadow); }
+    .nav-links a.active {
+      box-shadow: inset 0 -3px 0 var(--accent);
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    }
+
+    /* theme toggle */
+    .controls { display:flex; gap:0.5rem; align-items:center; }
+    #toggle-theme {
+      padding:0.45rem 0.6rem; border-radius:8px; border: none; cursor:pointer;
+      background:transparent; color:var(--text); display:inline-flex; gap:0.6rem; align-items:center;
+      font-weight:600;
+    }
+    #toggle-theme:focus { outline:3px solid rgba(59,130,246,0.18); outline-offset:2px; }
+
+    .cta-download {
+      padding:0.45rem 0.8rem; border-radius:8px; background: linear-gradient(90deg,var(--accent),var(--accent-strong)); color:white; font-weight:700; box-shadow: 0 6px 16px rgba(11,17,25,0.6);
+      display:inline-flex; align-items:center; gap:0.6rem;
+    }
+
+    /* ===========================
+       Hero / Intro
+       =========================== */
+    header.hero {
+      padding:2.25rem 1rem;
+      text-align:left;
+    }
+    header.hero .hero-grid { display:grid; grid-template-columns: 1fr 320px; gap:1.25rem; align-items:center; }
+    .hero-title { font-size:1.8rem; margin:0 0 0.5rem 0; }
+    .hero-sub { margin:0; color:var(--muted); max-width:60ch; }
+
+    .profile-card {
+      background: var(--card-bg); padding:1rem; border-radius:12px; box-shadow: 0 12px 30px var(--shadow); display:flex; flex-direction:column; gap:0.6rem;
+    }
+    .profile-photo {
+      width:100%; height:200px; border-radius:8px; object-fit:cover; background:#111827; display:flex; align-items:center; justify-content:center; color:var(--muted);
+    }
+
+    /* ===========================
+       Sections
+       =========================== */
+    section { margin:2rem 0; }
+    h2 { color:var(--text); margin:0 0 .8rem 0; font-size:1.15rem; border-bottom:2px solid transparent; padding-bottom:0.25rem; display:inline-block; }
+    .muted { color:var(--muted); font-size:0.95rem; }
+
+    .skills-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1rem; margin-top:0.75rem; }
+    .skill-category { background:var(--card-bg); padding:1rem; border-radius:10px; box-shadow: 0 8px 24px var(--shadow); }
+    .project-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:1rem; margin-top:1rem; }
+    .project-card { background:var(--card-bg); padding:1rem; border-radius:12px; box-shadow: 0 8px 24px var(--shadow); transition: transform .22s ease, box-shadow .22s ease; display:flex; flex-direction:column; gap:0.6rem; }
+    .project-card:hover { transform:translateY(-6px); box-shadow: 0 14px 40px var(--shadow); }
+    .placeholder-img { width:100%; height:160px; border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--muted); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)); }
+
+    blockquote { border-left:4px solid var(--accent); padding:0.9rem 1rem; margin:0.8rem 0; background:var(--card-bg); border-radius:6px; color:var(--muted); }
+
+    /* contact form */
+    form.contact-form { display:flex; flex-direction:column; gap:0.65rem; background:var(--card-bg); padding:1rem; border-radius:10px; box-shadow: 0 8px 24px var(--shadow); }
+    input, textarea { background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.04); padding:0.8rem; border-radius:8px; font:inherit; }
+    input:focus, textarea:focus { outline:3px solid rgba(59,130,246,0.12); outline-offset:2px; border-color:var(--accent); }
+
+    button[type="submit"] { padding:0.75rem 1rem; border-radius:8px; border:none; background:linear-gradient(90deg,var(--accent),var(--accent-strong)); color:white; font-weight:700; cursor:pointer; }
+    button[type="submit"]:hover { transform:translateY(-1px); }
+
+    /* footer */
+    footer { margin-top:2.5rem; padding:1.75rem; text-align:center; background:transparent; color:var(--muted); }
+
+    /* skip link */
+    .skip-link { position:absolute; left:-9999px; top:auto; background:#fff; padding:8px; z-index:1000; }
+    .skip-link:focus { left:12px; top:12px; color:#111; }
+
+    /* back to top */
+    #backTop { display:none; position:fixed; right:18px; bottom:24px; z-index:80; border:none; padding:0.6rem 0.75rem; border-radius:999px; cursor:pointer; background:var(--accent); color:white; box-shadow: 0 10px 28px rgba(2,6,23,0.6); }
+
+    /* small devices */
+    @media (max-width: 880px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .header-inner { padding: 0.6rem 0.8rem; }
+      .nav-links { display:none; } /* will show via nav toggle */
+    }
+
+    /* nav toggle for mobile */
+    .nav-toggle { display:none; background:transparent; border:none; color:var(--text); }
+    @media (max-width:880px) {
+      .nav-toggle { display:inline-flex; align-items:center; gap:0.5rem; }
+      .mobile-nav { display:flex; flex-direction:column; gap:0.5rem; padding:0.8rem 1rem; }
+      .nav-links.mobile { display:flex; flex-direction:column; gap:0.5rem; }
+    }
+
+    /* utility */
+    .flex { display:flex; gap:0.6rem; align-items:center; }
+    .text-xs { font-size:0.85rem; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#about">Skip to content</a>
+
+  <!-- ========================================
+       Header with sticky nav (dark-first)
+       ======================================== -->
+  <header class="site-header" role="banner" aria-label="Top of page">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">SJ</div>
+        <div>
+          <h1>Sikuku Joseph</h1>
+          <p class="text-xs">IT Support • Network Support Specialist • Graphics Designer</p>
+        </div>
+      </div>
+
+      <!-- mobile nav toggle -->
+      <div class="controls">
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">☰</button>
+
+        <nav id="primaryNav" class="nav-links" role="navigation" aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href= "Portfolio-showcase.html">Portfolio-showcase</a>
+          <a href="#skills">Skills</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <button id="toggle-theme" aria-pressed="false" title="Toggle dark/light theme">
+          <span id="theme-icon" aria-hidden="true">🌙</span>
+          <span id="theme-label" class="text-xs" style="margin-left:6px;">Dark</span>
+        </button>
+
+        <a href="https://drive.google.com/file/d/1Ia-EUW9VveWQGaL-GaqAbuIPsTzNxepE/view?usp=sharing" class="cta-download" download rel="noopener">Resume</a>
+      </div>
+    </div>
+
+    <!-- mobile nav container -->
+    <div id="mobileNavArea" style="display:none;" aria-hidden="true">
+      <nav class="nav-links mobile" role="navigation" aria-label="Mobile navigation"></nav>
+    </div>
+  </header>
+
+  <main id="main" role="main" aria-labelledby="about">
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <h2 class="hero-title">IT Support · Network Support Specialist . Graphics Designer</h2>
+          <p class="hero-sub">I design and maintain reliable network infrastructure, support core systems for high-availability environments, and craft AI-driven multimedia content to tell technical stories visually.</p>
+          <div style="margin-top:1rem">
+            <a class="cta-download" href="https://drive.google.com/file/d/1Ia-EUW9VveWQGaL-GaqAbuIPsTzNxepE/view?usp=sharing" download rel="noopener">Download Resume</a>
+            <a href="#projects" style="margin-left:0.6rem; padding:0.6rem 0.85rem; border-radius:8px; background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.04);">View Projects</a>
+          </div>
+        </div>
+
+        <aside class="profile-card" aria-label="Profile summary">
+          <div class="profile-photo" role="img" aria-label="Profile placeholder image">Profile image</div>
+          <div>
+            <p class="muted" style="margin:0 0 0.35rem 0;"><strong>Location:</strong> Nairobi, Kenya</p>
+            <p class="muted" style="margin:0 0 0.35rem 0;"><strong>Contact:</strong> josesikuku17@gmail.com</p>
+            <p class="muted" style="margin:0;">CCNA • Diploma ICT • ALX AI Augmented Skills</p>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <!-- ============= About & Experience (Polished) ============= -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <p>I'm an IT Support and Network Specialist with practical experience in enterprise support, network design, and AI-driven multimedia development. I combine structured troubleshooting with creative problem-solving to deliver reliable infrastructure and engaging digital content. Currently supporting core banking systems at Bank of India Kenya, I design VLANs, manage user accounts, and maintain secure, high-availability network environments. I enjoy automating routine tasks with Python and building data-driven visualizations to improve operational decisions.</p>
+
+      <h2>Experience</h2>
+      <ul>
+        <li>
+          <strong>Bank of India Kenya — IT & Network Support (May 2025 – Present)</strong>
+          <ul>
+            <li>Provide day-to-day IT and network support for core banking operations and office infrastructure.</li>
+            <li>Design and maintain VLANs, manage firewall rules and user accounts, and monitor network health.</li>
+            <li>Troubleshoot LAN/WAN issues, perform backups, and maintain configuration documentation to reduce incident response time.</li>
+            <li>Collaborate with cross-functional teams to implement upgrades and ensure compliance with security policies.</li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>AI Video Project Developer — ALX (Oct 2024 – Nov 2024)</strong>
+          <ul>
+            <li>Produced short-form AI-generated video content using OpenAI for scripts and voiceovers, Midjourney for visuals, and CapCut for editing.</li>
+            <li>Optimized content for YouTube and TikTok — adding captions, animations, and sound design to maximize engagement.</li>
+            <li>Implemented A/B tests on video hooks and thumbnail variations to improve click-through rates.</li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>IT Support — Autocomm Computers (July – Sept 2023)</strong>
+          <ul>
+            <li>Repaired and configured workstations and laptops, installed operating systems and essential software, and supported local LAN setups.</li>
+            <li>Documented common troubleshooting workflows and supported inventory management to improve service turnaround time.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============= Skills ============= -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Networking</h3>
+          <p class="muted">CCNA, VLANs, OSPF, Cisco routers & switches, Wireshark, Nmap</p>
+        </div>
+        <div class="skill-category">
+    <h3>Monitoring & Observability</h3>
+    <p>Health Checks, Metrics Collection, Alerting, Logging, Performance Monitoring, Dashboards</p>
+</div>
+        <div class="skill-category">
+          <h3>Operating Systems</h3>
+          <p class="muted">Windows Server, Linux server administration</p>
+        </div>
+        <div class="skill-category">
+          <h3>Security</h3>
+          <p class="muted">Microsoft Defender, Nessus, firewall & access control</p>
+        </div>
+        <div class="skill-category">
+          <h3>Creative</h3>
+          <p class="muted">CapCut, Illustrator, Photoshop, Canva</p>
+        </div>
+        <div class="skill-category">
+          <h3>DevOps & CI/CD</h3>
+          <p class="muted">Docker, GitHub Actions, CI/CD Pipelines, Automated Testing, Git, YAML</p>
+        </div>
+        <div class="skill-category">
+          <h3>Data</h3>
+          <p class="muted">Excel, SQL, Power BI (learning)</p>
+        </div>
+      </div>
+
+    </section>
+<!-- Add this to your existing index.html -->
+<section id="devops-showcase" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 60px 20px; text-align: center; margin: 40px 0; border-radius: 15px;">
+    <h2>DevOps Portfolio</h2>
+    <p style="font-size: 1.2rem; margin: 20px 0;">Complete CI/CD Pipeline • Containerization • Infrastructure as Code</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0;">
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+            <h3>CI/CD Pipeline</h3>
+            <p>Automated testing, building, and deployment</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+            <h3>Docker</h3>
+            <p>Containerized application deployment</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+            <h3>Terraform</h3>
+            <p>Infrastructure as Code</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+            <h3>Monitoring</h3>
+            <p>Production observability</p>
+        </div>
+    </div>
+    
+    <a href="portfolio-showcase.html" style="display: inline-block; background: white; color: #667eea; padding: 15px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; margin: 20px 0;">
+        View Complete DevOps Showcase →
+    </a>
+    
+    <p style="font-size: 0.9rem; opacity: 0.8;">Built with GitHub Actions • Automated Deployment • Production Ready</p>
+</section>
+    <!-- ============= Certifications ============= -->
+    <section id="certifications" aria-labelledby="certs-heading">
+      <h2 id="certs-heading">Certifications & Education</h2>
+      <div class="project-card" style="display:block;">
+        <div class="muted" style="margin-bottom:8px;">
+          <a href="https://www.udemy.com/certificate/UC-8fa28af3-64ca-4426-b02a-ff7938593325/" target="_blank" rel="noopener">✔ Adobe Illustrator – Udemy</a>
+        </div>
+        <div class="muted" style="margin-bottom:8px;">
+          <a href="https://drive.google.com/file/d/1R0sDqBkuThO8maETfYO8UvTtaG8hWBc8/view?usp=sharing" target="_blank" rel="noopener">✔ AI Augmented Professional Skills – ALX</a>
+        </div>
+        <div class="muted" style="margin-bottom:8px;">
+          <a href="https://drive.google.com/file/d/1WQWmilNXPrXEu2EbEKP_hxv_mTpebC0J/view?usp=sharing" target="_blank" rel="noopener">✔ CCNA – Kenyatta University</a>
+        </div>
+
+        <h3 style="margin-top:0.85rem;">Education</h3>
+        <ul class="muted">
+          <li>Diploma in Information Communication Technology — Rift Valley Institute of Business Studies</li>
+          <li>CCNA Certification — Kenyatta University (2024)</li>
+          <li>AI Augmented Skills Program — ALX (2024)</li>
+          <li>KCSE — Bungoma High School (2019)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============= Projects (with GitHub fetch) ============= -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Featured Projects</h2>
+      <div class="project-grid" id="project-grid">
+        <!-- Static project cards as fallbacks -->
+        <article class="project-card" aria-labelledby="p1">
+          <div class="placeholder-img" role="img" aria-label="AI video project">AI Video Project Image</div>
+          <h3 id="p1">AI Video Creation</h3>
+          <p class="muted">Developed short videos using Midjourney, OpenAI scripts/voiceovers, and CapCut edits. Focused on storytelling, captions and engagement metrics.</p>
+          <p class="text-xs"><strong>Technologies:</strong> Midjourney, OpenAI, CapCut</p>
+        </article>
+
+        <article class="project-card" aria-labelledby="p2">
+          <div class="placeholder-img" role="img" aria-label="Network simulation">Network Simulation Image</div>
+          <h3 id="p2">Network Simulation</h3>
+          <p class="muted">Designed enterprise LAN/WAN topologies in Cisco Packet Tracer: VLANs, OSPF, static routing and documentation.</p>
+          <p class="text-xs"><strong>Technologies:</strong> Cisco Packet Tracer, Wireshark</p>
+        </article>
+
+        <article class="project-card" aria-labelledby="p3">
+          <div class="placeholder-img" role="img" aria-label="IT support documentation">IT Support Documentation Image</div>
+          <h3 id="p3">IT Support Documentation</h3>
+          <p class="muted">Comprehensive troubleshooting guides, visual diagrams, and checklists to streamline support tasks and reduce MTTR.</p>
+          <p class="text-xs"><strong>Technologies:</strong> Visio, Notion</p>
+        </article>
+      </div>
+
+      <!-- Container for GH repos -->
+      <div id="github-projects" style="margin-top:1rem;"></div>
+    </section>
+
+    <!-- testimonials -->
+    <section aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading">What Others Say</h2>
+      <blockquote>
+        "Joseph is highly dependable and a fast learner in network configurations. His ability to troubleshoot complex network issues is impressive."
+        <br><strong>– Allan Onyango, Cisco Instructor</strong>
+      </blockquote>
+
+      <blockquote>
+        "He's innovative and committed to solving technical challenges. Joseph brings both technical skills and creative problem-solving to every project."
+        <br><strong>– Alex Morwabe, ICT Lecturer</strong>
+      </blockquote>
+    </section>
+
+    <!-- contact -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p class="muted"><strong>Email:</strong> <a href="mailto:josesikuku17@gmail.com">josesikuku17@gmail.com</a><br>
+      <strong>Phone:</strong> +254 794 850 094<br>
+      <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/joseph-sikuku" target="_blank" rel="noopener">linkedin.com/in/joseph-sikuku</a></p>
+
+      <form id="contact-form" class="contact-form" action="https://formsubmit.co/josesikuku17@gmail.com" method="POST" aria-label="Contact form">
+        <input type="hidden" name="_next" value="https://cjkreates.github.io/josephsikuku.github.io/thank-you.html">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <label class="sr-only" for="name">Your name</label>
+        <input id="name" name="name" type="text" placeholder="Your Name" aria-label="Your Name" required>
+
+        <label class="sr-only" for="email">Your email</label>
+        <input id="email" name="email" type="email" placeholder="Your Email" aria-label="Your Email" required>
+
+        <label class="sr-only" for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your Message" rows="5" aria-label="Your Message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="coming-heading">
+      <h2 id="coming-heading">Coming Soon</h2>
+      <ul class="muted">
+        <li><a href="blog.html">My Blog</a> - tutorials & insights (in development)</li>
+        <li><a href="projects.html">More Projects</a> - extended portfolio gallery (in development)</li>
+        <li><a href="tutorials.html">Video Tutorials</a> - technical guides (in development)</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div style="max-width:1100px;margin:0 auto;padding:1rem;">
+      <p class="muted">© <span id="year"></span> Sikuku Joseph | IT Analyst Portfolio</p>
+      <div style="display:flex;gap:0.6rem;justify-content:center;margin-top:0.6rem;">
+        <a href="https://github.com/Cjkreates" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+        <a href="https://www.linkedin.com/in/joseph-sikuku" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+        <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backTop" aria-label="Back to top">↑</button>
+
+  <script>
+    /* ===========================
+       Utilities & initial UI
+       =========================== */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Skip link support: ensure focus lands at main content
+    document.querySelector('.skip-link').addEventListener('click', function(e) {
+      const main = document.querySelector('#main');
+      if (main) { setTimeout(() => main.focus(), 10); }
+    });
+
+    /* ===========================
+       Theme (dark-first) + persistence
+       =========================== */
+    const toggleBtn = document.getElementById('toggle-theme');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeLabel = document.getElementById('theme-label');
+
+    // set initial theme: prefer saved, otherwise dark
+    (function initTheme() {
+      const saved = localStorage.getItem('theme');
+      const initial = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', initial);
+      toggleBtn.setAttribute('aria-pressed', initial === 'dark' ? 'true' : 'false');
+      updateThemeUI(initial);
+    })();
+
+    function updateThemeUI(theme) {
+      if (theme === 'dark') {
+        themeIcon.textContent = '🌙';
+        themeLabel.textContent = 'Dark';
+        toggleBtn.setAttribute('aria-pressed', 'true');
+      } else {
+        themeIcon.textContent = '☀️';
+        themeLabel.textContent = 'Light';
+        toggleBtn.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeUI(next);
+    });
+
+    /* ===========================
+       Mobile nav toggle
+       =========================== */
+    const navToggle = document.getElementById('navToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    const mobileNavArea = document.getElementById('mobileNavArea');
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      // Populate mobile nav links if empty
+      const mobileNav = mobileNavArea.querySelector('.nav-links.mobile');
+      if (mobileNav && mobileNav.children.length === 0) {
+        document.querySelectorAll('#primaryNav a').forEach(a => {
+          const clone = a.cloneNode(true);
+          mobileNav.appendChild(clone);
+        });
+      }
+      mobileNavArea.style.display = expanded ? 'none' : 'block';
+      mobileNavArea.setAttribute('aria-hidden', String(expanded));
+    });
+
+    /* ===========================
+       Back to top button
+       =========================== */
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      backTop.style.display = window.scrollY > 450 ? 'block' : 'none';
+    });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ===========================
+       Contact form client validation
+       =========================== */
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        const name = this.name.value.trim();
+        const email = this.email.value.trim();
+        const message = this.message.value.trim();
+        if (!name || !email || !message) {
+          e.preventDefault();
+          alert('Please fill in all fields before submitting.');
+          return false;
+        }
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!re.test(email)) {
+          e.preventDefault();
+          alert('Please enter a valid email address.');
+          return false;
+        }
+        // let FormSubmit handle submission; optionally show a spinner here
+      });
+    }
+
+    /* ===========================
+       GitHub repos fetch (graceful)
+       =========================== */
+    (function fetchGitHub() {
+      const target = document.getElementById('github-projects');
+      const url = "https://api.github.com/users/Cjkreates/repos?sort=updated&per_page=5";
+      fetch(url)
+        .then(res => {
+          if (res.status === 403) throw new Error('Rate limit exceeded');
+          if (!res.ok) throw new Error('Network response was not ok');
+          return res.json();
+        })
+        .then(data => {
+          if (!data || data.length === 0) {
+            target.innerHTML = '<p class="muted">No public repositories found.</p>';
+            return;
+          }
+          const container = document.createElement('div');
+          container.className = 'project-grid';
+          data.forEach(repo => {
+            const card = document.createElement('article');
+            card.className = 'project-card';
+            card.innerHTML = `
+              <div class="placeholder-img" role="img" aria-label="Repository placeholder">${repo.name}</div>
+              <h3><a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">${repo.name}</a></h3>
+              <p class="muted">${repo.description ? repo.description : 'No description available.'}</p>
+              <p class="text-xs"><strong>Primary language:</strong> ${repo.language || '—'} &bull; Updated: ${new Date(repo.updated_at).toLocaleDateString()}</p>
+            `;
+            container.appendChild(card);
+          });
+          target.appendChild(container);
+        })
+        .catch(err => {
+          console.error('Error fetching GitHub projects:', err);
+          target.innerHTML = '<p class="muted">Unable to load GitHub projects at this time.</p>';
+        });
+    })();
+
+    /* ===========================
+       Scrollspy / active nav highlight
+       =========================== */
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('#primaryNav a');
+    function onScrollSpy() {
+      const offset = window.scrollY + 160; // adjust when header is sticky
+      let currentId = null;
+      sections.forEach(sec => {
+        if (sec.offsetTop <= offset) currentId = sec.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === (`#${currentId}`));
+      });
+      // also update mobile nav if present
+      const mobileLinks = document.querySelectorAll('.nav-links.mobile a');
+      mobileLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === (`#${currentId}`));
+      });
+    }
+    window.addEventListener('scroll', onScrollSpy);
+    window.addEventListener('resize', onScrollSpy);
+    onScrollSpy();
+
+    /* ===========================
+       Small accessibility helper: focus outlines on keyboard only
+       =========================== */
+    (function keyboardOutlineToggle() {
+      function handleFirstTab(e) {
+        if (e.key === 'Tab') {
+          document.documentElement.classList.add('user-is-tabbing');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
+      }
+      window.addEventListener('keydown', handleFirstTab);
+    })();
+  </script>
+
+  <!-- NOTE: Analytics should be loaded after cookie consent.
+       If you want to include GA, replace G-XXXXXXXX with your ID and consider respecting consent. -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script> -->
+
+  <!-- <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXX'); </script> -->
+    <!-- Monitoring Status Section -->
+    <section id="monitoring-status" style="background: #f8f9fa; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #28a745;">
+        <h2>📊 System Monitoring</h2>
+        <div id="monitoring-info">
+            <p><strong>Status:</strong> <span style="color: green;">● MONITORED</span></p>
+            <p><strong>Health Checks:</strong> <span id="health-status">Active</span></p>
+            <p><strong>Last Check:</strong> <span id="last-check">Recently</span></p>
+            <p><em>This application is monitored for performance and availability</em></p>
+        </div>
+    </section>
+
+    <script>
+        // Monitoring status display
+        function updateMonitoringStatus() {
+            const now = new Date();
+            document.getElementById('last-check').textContent = now.toLocaleTimeString();
+            
+            // Simulate health status (in real app, this would call an API)
+            const healthStatus = document.getElementById('health-status');
+            healthStatus.innerHTML = '<span style="color: green;">✅ Healthy</span>';
+            
+            // Simulate metrics (in real app, these would be real metrics)
+            console.log('📊 Monitoring: Application health check simulated');
+        }
+        
+        // Update monitoring status every 30 seconds
+        updateMonitoringStatus();
+        setInterval(updateMonitoringStatus, 30000);
+    </script>
+
+
+</body>
+</html>
+< ! - -   A u t o - d e p l o y e d   v i a   C I / C D   - - > 
+ 
+ 
+>>>>>>> b83195f5f141b68ae3aae87f16e436e979f98f79

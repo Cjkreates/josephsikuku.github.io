@@ -1,0 +1,9 @@
+{
+  "environment": "development",
+  "api_url": "https://dev-api.example.com",
+  "debug": true,
+  "features": {
+    "new_ui": true,
+    "experimental": true
+  }
+}
