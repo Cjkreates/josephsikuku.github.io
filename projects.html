@@ -1,92 +1,176 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tech projects by Sikuku Joseph" />
-  <title>Projects | Sikuku Joseph</title>
-  <style>
-    :root {
-      --bg: #f5f7fa;
-      --text: #333;
-      --header-bg: #1f2937;
-      --accent: #3b82f6;
-    }
-    [data-theme='dark'] {
-      --bg: #121212;
-      --text: #f3f3f3;
-      --header-bg: #0d1117;
-      --accent: #90cdf4;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-    }
-    header {
-      background: var(--header-bg);
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    h1 {
-      font-size: 2rem;
-    }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .project {
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-    h2 {
-      color: var(--header-bg);
-      margin-top: 0;
-    }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      background: var(--header-bg);
-      color: white;
-      padding: 1rem;
-      margin-top: 3rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects | Sikuku Joseph</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Filter Button Styles */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Animation for filtering */
+        .project-item {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .project-item.hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>My Projects</h1>
-    <p>Explore detailed breakdowns of my best technical work</p>
-  </header>
-  <main>
-    <div class="project">
-      <h2><a href="#">VoIP Network Simulation</a></h2>
-      <p>Enterprise-level VoIP network built using Cisco Packet Tracer.</p>
-    </div>
-    <div class="project">
-      <h2><a href="#">AI Video Creation Demo</a></h2>
-      <p>Multimedia project using Midjourney, OpenAI APIs, and CapCut.</p>
-    </div>
-  </main>
-  <footer>
-    <p>© <span id="year"></span> Sikuku Joseph | <a href="index.html" style="color:#90cdf4;">Home</a></p>
-  </footer>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">Sikuku<span class="text-gradient">.Dev</span></a>
+            <div class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="portfolio-showcase.html" style="color: var(--secondary)">DevOps Case Study</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero container animate-on-scroll">
+            <h1>Project <span class="text-gradient">Gallery</span></h1>
+            <p>A collection of my technical work in Network Engineering, DevOps, and AI.</p>
+        </section>
+
+        <section class="container section-padding" style="padding-top: 0;">
+            
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="devops">DevOps</button>
+                <button class="filter-btn" data-filter="network">Networking</button>
+                <button class="filter-btn" data-filter="ai">AI / Python</button>
+            </div>
+
+            <div class="grid-3" id="project-grid">
+                
+                <article class="card project-item" data-category="devops">
+                    <div class="card-icon"><i class="fas fa-infinity"></i></div>
+                    <h3>DevOps CI/CD Pipeline</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">End-to-end automation with Docker, Jenkins, and GitHub Actions.</p>
+                    <div class="tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Terraform</span>
+                    </div>
+                    <a href="portfolio-showcase.html" style="display: block; margin-top: 1.5rem; color: var(--primary); font-weight: 600;">View Case Study &rarr;</a>
+                </article>
+
+                <article class="card project-item" data-category="network">
+                    <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Enterprise Network Sim</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Secure LAN/WAN infrastructure using Cisco Packet Tracer.</p>
+                    <div class="tags">
+                        <span class="tag">Cisco</span>
+                        <span class="tag">OSPF</span>
+                        <span class="tag">VLAN</span>
+                    </div>
+                    <a href="#" style="display: block; margin-top: 1.5rem; color: var(--primary); font-weight: 600;">View Details &rarr;</a>
+                </article>
+
+                <article class="card project-item" data-category="ai">
+                    <div class="card-icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI Video Automation</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Python script integrating OpenAI API for content creation.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">OpenAI</span>
+                    </div>
+                    <a href="https://github.com/Cjkreates" style="display: block; margin-top: 1.5rem; color: var(--primary); font-weight: 600;">View Code &rarr;</a>
+                </article>
+
+                <article class="card project-item" data-category="network">
+                    <div class="card-icon"><i class="fas fa-phone-alt"></i></div>
+                    <h3>VoIP Implementation</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">Enterprise VoIP configuration simulation.</p>
+                    <div class="tags">
+                        <span class="tag">VoIP</span>
+                        <span class="tag">Cisco</span>
+                    </div>
+                    <a href="#" style="display: block; margin-top: 1.5rem; color: var(--primary); font-weight: 600;">View Details &rarr;</a>
+                </article>
+
+                <article class="card project-item" data-category="devops">
+                    <div class="card-icon"><i class="fab fa-aws"></i></div>
+                    <h3>Cloud Infrastructure</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-muted);">AWS cloud resource provisioning using Terraform.</p>
+                    <div class="tags">
+                        <span class="tag">AWS</span>
+                        <span class="tag">IaC</span>
+                    </div>
+                    <a href="#" style="display: block; margin-top: 1.5rem; color: var(--primary); font-weight: 600;">View Details &rarr;</a>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Sikuku Joseph.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    
+    <script>
+        const buttons = document.querySelectorAll('.filter-btn');
+        const projects = document.querySelectorAll('.project-item');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projects.forEach(project => {
+                    if (filter === 'all' || project.getAttribute('data-category') === filter) {
+                        project.classList.remove('hidden');
+                    } else {
+                        project.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

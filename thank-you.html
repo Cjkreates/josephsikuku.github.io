@@ -1,39 +1,45 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You | Sikuku Joseph</title>
-  <style>
-    body {
-      background-color: #f5f7fa;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      color: #1f2937;
-      text-align: center;
-    }
-    h1 {
-      color: #3b82f6;
-    }
-    a {
-      color: #3b82f6;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Sikuku Joseph</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Thank You!</h1>
-  <p>Your message has been sent successfully. I’ll get back to you soon.</p>
-  <p><a href="index.html">← Back to Home</a></p>
+
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">Sikuku<span class="text-gradient">.Dev</span></a>
+            <div class="nav-links">
+                <a href="index.html">Back to Home</a>
+            </div>
+             <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main style="display: flex; align-items: center; justify-content: center; min-height: 80vh;">
+        <div class="container" style="text-align: center;">
+            <div class="card" style="display: inline-block; max-width: 500px; padding: 3rem;">
+                <div style="font-size: 4rem; color: var(--secondary); margin-bottom: 1rem;">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1 style="margin-bottom: 1rem;">Message Sent!</h1>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">
+                    Thank you for reaching out. I will review your message and get back to you within 24 hours.
+                </p>
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-arrow-left"></i> Return Home
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
 </body>
 </html>
