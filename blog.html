@@ -1,107 +1,271 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tech insights, tutorials and thoughts by Sikuku Joseph" />
+  <meta name="description" content="Technical tutorials, network analysis, and AI experiments by Sikuku Joseph." />
+  <meta name="author" content="Sikuku Joseph" />
+  
   <title>Blog | Sikuku Joseph</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* --- SHARED CSS VARIABLES (Matches Portfolio) --- */
     :root {
-      --bg: #f5f7fa;
-      --text: #333;
-      --header-bg: #1f2937;
-      --accent: #3b82f6;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #334155;
+      --text-light: #64748b;
+      --heading: #1e293b;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --nav-height: 70px;
     }
+
     [data-theme='dark'] {
-      --bg: #121212;
-      --text: #f3f3f3;
-      --header-bg: #0d1117;
-      --accent: #90cdf4;
+      --primary: #60a5fa;
+      --primary-hover: #3b82f6;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #cbd5e1;
+      --text-light: #94a3b8;
+      --heading: #f1f5f9;
+      --border: #334155;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
     }
+
+    /* --- BASE STYLES --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
+      font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
+      line-height: 1.6;
       transition: background 0.3s, color 0.3s;
+      padding-top: var(--nav-height);
+      display: flex; flex-direction: column; min-height: 100vh;
     }
-    header {
-      background: var(--header-bg);
-      color: white;
-      padding: 2rem 1rem;
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    h1, h2, h3 { color: var(--heading); font-weight: 700; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* --- NAVIGATION --- */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex; align-items: center;
+    }
+    [data-theme='dark'] nav { background: rgba(15, 23, 42, 0.9); }
+    
+    .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: var(--heading); }
+    .logo span { color: var(--primary); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-weight: 500; color: var(--heading); }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+    .theme-toggle { background: none; border: none; cursor: pointer; color: var(--heading); font-size: 1.2rem; }
+
+    /* --- BLOG HEADER --- */
+    .blog-header {
+      padding: 4rem 0 2rem;
       text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: var(--card-bg);
+      margin-bottom: 3rem;
     }
-    h1 {
-      font-size: 2rem;
+    .blog-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .blog-header p { color: var(--text-light); font-size: 1.1rem; }
+
+    /* --- CATEGORY PILLS --- */
+    .categories {
+      display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;
     }
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    .cat-pill {
+      padding: 0.5rem 1rem; border-radius: 20px;
+      background: var(--bg); border: 1px solid var(--border);
+      font-size: 0.9rem; font-weight: 500; color: var(--text-light);
     }
-    article {
-      background: white;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-      padding: 1rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    .cat-pill:hover, .cat-pill.active {
+      background: var(--primary); color: white; border-color: var(--primary);
     }
-    h2 {
-      margin-top: 0;
-      color: var(--header-bg);
+
+    /* --- BLOG GRID --- */
+    .blog-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem;
+      padding-bottom: 4rem;
     }
-    a {
-      color: var(--accent);
-      text-decoration: none;
+
+    /* --- ARTICLE CARD --- */
+    .article-card {
+      background: var(--card-bg); border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      transition: transform 0.3s ease; display: flex; flex-direction: column;
     }
-    a:hover {
-      text-decoration: underline;
+    .article-card:hover { transform: translateY(-5px); }
+    
+    .card-img {
+      height: 200px; background: var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-light); font-size: 3rem; position: relative;
     }
+    .card-tag {
+      position: absolute; top: 1rem; left: 1rem;
+      background: var(--primary); color: white;
+      padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;
+    }
+    
+    .card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .meta { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.8rem; display: flex; gap: 1rem; }
+    .meta i { margin-right: 0.3rem; }
+    
+    .card-content h2 { font-size: 1.4rem; margin-bottom: 0.8rem; line-height: 1.3; }
+    .card-content h2 a { color: var(--heading); }
+    .card-content h2 a:hover { color: var(--primary); }
+    
+    .card-content p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+    
+    .read-more {
+      font-weight: 600; color: var(--primary); display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .read-more:hover { gap: 0.8rem; } /* Subtle animation */
+
+    /* --- FOOTER --- */
     footer {
-      text-align: center;
-      background: var(--header-bg);
-      color: white;
-      padding: 1rem;
-      margin-top: 3rem;
+      background: var(--card-bg); border-top: 1px solid var(--border);
+      text-align: center; padding: 2rem; margin-top: auto; color: var(--text-light);
     }
-<<<<<<< HEAD
-=======
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
+    footer a { color: var(--primary); }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .blog-header h1 { font-size: 2rem; }
     }
->>>>>>> b83195f5f141b68ae3aae87f16e436e979f98f79
   </style>
 </head>
 <body>
-  <header>
-    <h1>Sikuku Joseph's Blog</h1>
-    <p>Thoughts, tutorials & tech insights</p>
+
+  <nav>
+    <div class="container nav-container">
+      <div class="logo"><a href="index.html">Sikuku<span>.Dev</span></a></div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="blog.html" class="active">Blog</a>
+      </div>
+      <button class="theme-toggle" id="toggle-theme" title="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <header class="blog-header">
+    <div class="container">
+      <h1>Technical Writings</h1>
+      <p>Insights on Network Engineering, AI Tools, and Web Development.</p>
+      
+      <div class="categories">
+        <a href="#" class="cat-pill active">All</a>
+        <a href="#" class="cat-pill">Networking</a>
+        <a href="#" class="cat-pill">AI & Automation</a>
+        <a href="#" class="cat-pill">Tutorials</a>
+      </div>
+    </div>
   </header>
-  <main>
-    <article>
-      <h2><a href="#">How I Built My Portfolio Site</a></h2>
-<<<<<<< HEAD
-      <p>A walkthrough of the tools, code, and design decisions behind my portfolio.</p>
-    </article>
-    <article>
-      <h2><a href="#">Top 5 Tools for IT Analysts</a></h2>
-      <p>A quick look at my favorite tools for staying productive and effective.</p>
-=======
-      <p>Lets take a walkthrough of the tools, code, and design decisions behind my portfolio.</p>
-    </article>
-    <article>
-      <h2><a href="#">Top 5 Tools for IT Analysts</a></h2>
-    <p>© <span id="year"></span> Sikuku Joseph | <a href="index.html">Home</a></p>
->>>>>>> b83195f5f141b68ae3aae87f16e436e979f98f79
-    </article>
+
+  <main class="container">
+    <div class="blog-grid">
+      
+      <article class="article-card">
+        <div class="card-img">
+          <i class="fas fa-code"></i>
+          <span class="card-tag">Web Dev</span>
+        </div>
+        <div class="card-content">
+          <div class="meta">
+            <span><i class="far fa-calendar"></i> Dec 5, 2025</span>
+            <span><i class="far fa-clock"></i> 5 min read</span>
+          </div>
+          <h2><a href="#">How I Built My Portfolio Site (2025 Edition)</a></h2>
+          <p>A walkthrough of the tools, code, and design decisions behind my new portfolio, moving from basic HTML to a modern, semantic design.</p>
+          <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-img">
+          <i class="fas fa-toolbox"></i>
+          <span class="card-tag">Productivity</span>
+        </div>
+        <div class="card-content">
+          <div class="meta">
+            <span><i class="far fa-calendar"></i> Nov 20, 2025</span>
+            <span><i class="far fa-clock"></i> 3 min read</span>
+          </div>
+          <h2><a href="#">Top 5 Tools for IT Analysts</a></h2>
+          <p>A quick look at my favorite tools for staying productive, including Wireshark tricks and Notion templates for project management.</p>
+          <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <div class="card-img">
+          <i class="fas fa-network-wired"></i>
+          <span class="card-tag">Networking</span>
+        </div>
+        <div class="card-content">
+          <div class="meta">
+            <span><i class="far fa-calendar"></i> Oct 15, 2025</span>
+            <span><i class="far fa-clock"></i> 8 min read</span>
+          </div>
+          <h2><a href="#">Understanding VLANs: A Practical Guide</a></h2>
+          <p>Breaking down Virtual LANs with Cisco Packet Tracer examples. How to segment traffic for security and performance.</p>
+          <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+    </div>
   </main>
+
   <footer>
-    <p>© <span id="year"></span> Sikuku Joseph | <a href="index.html" style="color:#90cdf4;">Home</a></p>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Sikuku Joseph | <a href="index.html">Back to Home</a></p>
+    </div>
   </footer>
+
   <script>
+    // 1. Dynamic Year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // 2. Theme Logic (Shared with Index)
+    const toggleBtn = document.getElementById("toggle-theme");
+    const icon = toggleBtn.querySelector('i');
+    
+    // Check local storage so theme matches your Index page
+    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    updateIcon(savedTheme);
+
+    toggleBtn.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem('theme', next); // Persist across pages
+      updateIcon(next);
+    });
+
+    function updateIcon(theme) {
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
   </script>
 </body>
 </html>
