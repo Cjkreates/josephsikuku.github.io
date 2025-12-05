@@ -92,73 +92,28 @@
     </nav>
 
     <main>
-        
         <header class="hero container animate-on-scroll">
-            <h1>Technical <span class="text-gradient">Writings</span></h1>
-            <p>Insights on Network Engineering, AI Tools, and Web Development.</p>
+            <h1>Tech <span class="text-gradient">News & Insights</span></h1>
+            <p>Curated articles on DevOps, Networking, and AI fetched live from the community.</p>
         </header>
 
         <section class="container section-padding" style="padding-top: 0;">
             
             <div class="filter-container">
-                <button class="filter-pill active" data-filter="all">All Posts</button>
-                <button class="filter-pill" data-filter="network">Networking</button>
-                <button class="filter-pill" data-filter="ai">AI & Tools</button>
-                <button class="filter-pill" data-filter="web">Web Dev</button>
+                <button class="filter-pill active" onclick="fetchNews('devops')">DevOps</button>
+                <button class="filter-pill" onclick="fetchNews('networking')">Networking</button>
+                <button class="filter-pill" onclick="fetchNews('ai')">AI & ML</button>
+                <button class="filter-pill" onclick="fetchNews('webdev')">Web Dev</button>
             </div>
 
-            <div class="grid-3">
-                
-                <article class="card blog-item" data-category="web">
-                    <div style="margin: -2rem -2rem 1.5rem -2rem;">
-                        <div class="article-placeholder">
-                            <i class="fas fa-code"></i>
-                            <span class="article-category">Web Dev</span>
-                        </div>
-                    </div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                        <i class="far fa-calendar"></i> Dec 5, 2025 &bull; 5 min read
-                    </div>
-                    <h3><a href="#">Building a Portfolio System</a></h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Moving from static HTML to a unified Design System with semantic CSS variables.</p>
-                    <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Read Article</a>
-                </article>
-
-                <article class="card blog-item" data-category="network">
-                    <div style="margin: -2rem -2rem 1.5rem -2rem;">
-                        <div class="article-placeholder">
-                            <i class="fas fa-network-wired"></i>
-                            <span class="article-category">Networking</span>
-                        </div>
-                    </div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                        <i class="far fa-calendar"></i> Oct 15, 2025 &bull; 8 min read
-                    </div>
-                    <h3><a href="#">Understanding VLANs</a></h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">A practical guide to breaking down Virtual LANs with Cisco Packet Tracer examples.</p>
-                    <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Read Article</a>
-                </article>
-
-                <article class="card blog-item" data-category="ai">
-                    <div style="margin: -2rem -2rem 1.5rem -2rem;">
-                        <div class="article-placeholder">
-                            <i class="fas fa-toolbox"></i>
-                            <span class="article-category">Productivity</span>
-                        </div>
-                    </div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                        <i class="far fa-calendar"></i> Nov 20, 2025 &bull; 3 min read
-                    </div>
-                    <h3><a href="#">Top 5 Tools for Analysts</a></h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Wireshark tricks and Notion templates for managing IT projects efficiently.</p>
-                    <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Read Article</a>
-                </article>
-
+            <div class="grid-3" id="blog-container">
+                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                    <i class="fas fa-spinner fa-spin fa-2x"></i>
+                </div>
             </div>
+
         </section>
-
     </main>
-
     <footer>
         <div class="container">
             <p>&copy; <span id="year"></span> Sikuku Joseph. <a href="index.html" style="color: var(--primary);">Back to Home</a></p>
@@ -192,5 +147,88 @@
             });
         });
     </script>
+<script>
+    const container = document.getElementById('blog-container');
+    const pills = document.querySelectorAll('.filter-pill');
+
+    // 1. Function to Fetch and Render News
+    async function fetchNews(tag) {
+        // Update UI: Set active pill
+        pills.forEach(p => p.classList.remove('active'));
+        event ? event.target.classList.add('active') : pills[0].classList.add('active'); // specific logic for click vs load
+
+        // Show Loading Spinner
+        container.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">
+                <i class="fas fa-circle-notch fa-spin fa-2x"></i><br><br>Fetching latest ${tag} news...
+            </div>
+        `;
+
+        try {
+            // Fetch from Dev.to API (Top articles for the week)
+            const response = await fetch(`https://dev.to/api/articles?tag=${tag}&top=7&per_page=6`);
+            const articles = await response.json();
+
+            // Clear Loading Spinner
+            container.innerHTML = '';
+
+            // Render Articles
+            articles.forEach(article => {
+                // Format Date
+                const date = new Date(article.published_at).toLocaleDateString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric'
+                });
+
+                // Fallback image if the article doesn't have a cover image
+                const imageHTML = article.cover_image 
+                    ? `<img src="${article.cover_image}" alt="${article.title}" style="width: 100%; height: 180px; object-fit: cover;">`
+                    : `<div class="article-placeholder"><i class="fas fa-newspaper"></i></div>`;
+
+                // Create Card HTML
+                const card = document.createElement('article');
+                card.className = 'card blog-item animate-on-scroll';
+                
+                // Use your existing styles
+                card.innerHTML = `
+                    <div style="margin: -2rem -2rem 1.5rem -2rem; overflow: hidden; border-radius: 12px 12px 0 0;">
+                        ${imageHTML}
+                        <div style="position: absolute; top: 1rem; left: 1rem; background: var(--primary); color: white; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;">
+                            ${tag}
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                        <i class="far fa-calendar"></i> ${date} &bull; ${article.reading_time_minutes} min read
+                    </div>
+                    <h3 style="margin-bottom: 0.5rem; line-height: 1.3;">
+                        <a href="${article.url}" target="_blank" style="transition: color 0.2s;">${article.title}</a>
+                    </h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                        ${article.description}
+                    </p>
+                    <a href="${article.url}" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center;">
+                        Read Full Article <i class="fas fa-external-link-alt" style="margin-left: 8px;"></i>
+                    </a>
+                `;
+                
+                container.appendChild(card);
+            });
+
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            container.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; color: red;">
+                    <i class="fas fa-exclamation-triangle"></i> Failed to load news. Please try again later.
+                </div>
+            `;
+        }
+    }
+
+    // 2. Initial Load
+    document.addEventListener('DOMContentLoaded', () => {
+        // Set the first button as active visually on load
+        pills[0].classList.add('active');
+        fetchNews('devops');
+    });
+</script>    
 </body>
 </html>
