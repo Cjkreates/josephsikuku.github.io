@@ -1,271 +1,196 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Technical tutorials, network analysis, and AI experiments by Sikuku Joseph." />
-  <meta name="author" content="Sikuku Joseph" />
-  
-  <title>Blog | Sikuku Joseph</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* --- SHARED CSS VARIABLES (Matches Portfolio) --- */
-    :root {
-      --primary: #3b82f6;
-      --primary-hover: #2563eb;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #334155;
-      --text-light: #64748b;
-      --heading: #1e293b;
-      --border: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --nav-height: 70px;
-    }
-
-    [data-theme='dark'] {
-      --primary: #60a5fa;
-      --primary-hover: #3b82f6;
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --text: #cbd5e1;
-      --text-light: #94a3b8;
-      --heading: #f1f5f9;
-      --border: #334155;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-    }
-
-    /* --- BASE STYLES --- */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
-      padding-top: var(--nav-height);
-      display: flex; flex-direction: column; min-height: 100vh;
-    }
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    h1, h2, h3 { color: var(--heading); font-weight: 700; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-
-    /* --- NAVIGATION --- */
-    nav {
-      position: fixed; top: 0; left: 0; width: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      height: var(--nav-height);
-      display: flex; align-items: center;
-    }
-    [data-theme='dark'] nav { background: rgba(15, 23, 42, 0.9); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical tutorials, network analysis, and AI experiments by Sikuku Joseph.">
+    <title>Blog | Sikuku Joseph</title>
     
-    .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-    .logo { font-size: 1.5rem; font-weight: 700; color: var(--heading); }
-    .logo span { color: var(--primary); }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { font-weight: 500; color: var(--heading); }
-    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-    .theme-toggle { background: none; border: none; cursor: pointer; color: var(--heading); font-size: 1.2rem; }
-
-    /* --- BLOG HEADER --- */
-    .blog-header {
-      padding: 4rem 0 2rem;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-      background: var(--card-bg);
-      margin-bottom: 3rem;
-    }
-    .blog-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    .blog-header p { color: var(--text-light); font-size: 1.1rem; }
-
-    /* --- CATEGORY PILLS --- */
-    .categories {
-      display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;
-    }
-    .cat-pill {
-      padding: 0.5rem 1rem; border-radius: 20px;
-      background: var(--bg); border: 1px solid var(--border);
-      font-size: 0.9rem; font-weight: 500; color: var(--text-light);
-    }
-    .cat-pill:hover, .cat-pill.active {
-      background: var(--primary); color: white; border-color: var(--primary);
-    }
-
-    /* --- BLOG GRID --- */
-    .blog-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem;
-      padding-bottom: 4rem;
-    }
-
-    /* --- ARTICLE CARD --- */
-    .article-card {
-      background: var(--card-bg); border-radius: 12px; overflow: hidden;
-      border: 1px solid var(--border); box-shadow: var(--shadow);
-      transition: transform 0.3s ease; display: flex; flex-direction: column;
-    }
-    .article-card:hover { transform: translateY(-5px); }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    .card-img {
-      height: 200px; background: var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-light); font-size: 3rem; position: relative;
-    }
-    .card-tag {
-      position: absolute; top: 1rem; left: 1rem;
-      background: var(--primary); color: white;
-      padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;
-    }
-    
-    .card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-    .meta { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.8rem; display: flex; gap: 1rem; }
-    .meta i { margin-right: 0.3rem; }
-    
-    .card-content h2 { font-size: 1.4rem; margin-bottom: 0.8rem; line-height: 1.3; }
-    .card-content h2 a { color: var(--heading); }
-    .card-content h2 a:hover { color: var(--primary); }
-    
-    .card-content p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
-    
-    .read-more {
-      font-weight: 600; color: var(--primary); display: inline-flex; align-items: center; gap: 0.5rem;
-    }
-    .read-more:hover { gap: 0.8rem; } /* Subtle animation */
+    <link rel="stylesheet" href="style.css">
 
-    /* --- FOOTER --- */
-    footer {
-      background: var(--card-bg); border-top: 1px solid var(--border);
-      text-align: center; padding: 2rem; margin-top: auto; color: var(--text-light);
-    }
-    footer a { color: var(--primary); }
+    <style>
+        /* Blog Filter Pills */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-pill {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
 
-    /* --- RESPONSIVE --- */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .blog-header h1 { font-size: 2rem; }
-    }
-  </style>
+        .filter-pill:hover, .filter-pill.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Article Image Placeholder */
+        .article-placeholder {
+            height: 180px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--text-muted);
+            position: relative;
+        }
+        
+        .article-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Animation class for filtering */
+        .blog-item { transition: opacity 0.3s ease, transform 0.3s ease; }
+        .blog-item.hidden { display: none; }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <div class="container nav-container">
-      <div class="logo"><a href="index.html">Sikuku<span>.Dev</span></a></div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="index.html#experience">Experience</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="blog.html" class="active">Blog</a>
-      </div>
-      <button class="theme-toggle" id="toggle-theme" title="Toggle theme">
-        <i class="fas fa-moon"></i>
-      </button>
-    </div>
-  </nav>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">Sikuku<span class="text-gradient">.Dev</span></a>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="portfolio-showcase.html" style="color: var(--secondary)">DevOps Case Study</a>
+                <a href="blog.html" class="active">Blog</a>
+            </div>
 
-  <header class="blog-header">
-    <div class="container">
-      <h1>Technical Writings</h1>
-      <p>Insights on Network Engineering, AI Tools, and Web Development.</p>
-      
-      <div class="categories">
-        <a href="#" class="cat-pill active">All</a>
-        <a href="#" class="cat-pill">Networking</a>
-        <a href="#" class="cat-pill">AI & Automation</a>
-        <a href="#" class="cat-pill">Tutorials</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <div class="blog-grid">
-      
-      <article class="article-card">
-        <div class="card-img">
-          <i class="fas fa-code"></i>
-          <span class="card-tag">Web Dev</span>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
         </div>
-        <div class="card-content">
-          <div class="meta">
-            <span><i class="far fa-calendar"></i> Dec 5, 2025</span>
-            <span><i class="far fa-clock"></i> 5 min read</span>
-          </div>
-          <h2><a href="#">How I Built My Portfolio Site (2025 Edition)</a></h2>
-          <p>A walkthrough of the tools, code, and design decisions behind my new portfolio, moving from basic HTML to a modern, semantic design.</p>
-          <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+    </nav>
+
+    <main>
+        
+        <header class="hero container animate-on-scroll">
+            <h1>Technical <span class="text-gradient">Writings</span></h1>
+            <p>Insights on Network Engineering, AI Tools, and Web Development.</p>
+        </header>
+
+        <section class="container section-padding" style="padding-top: 0;">
+            
+            <div class="filter-container">
+                <button class="filter-pill active" data-filter="all">All Posts</button>
+                <button class="filter-pill" data-filter="network">Networking</button>
+                <button class="filter-pill" data-filter="ai">AI & Tools</button>
+                <button class="filter-pill" data-filter="web">Web Dev</button>
+            </div>
+
+            <div class="grid-3">
+                
+                <article class="card blog-item" data-category="web">
+                    <div style="margin: -2rem -2rem 1.5rem -2rem;">
+                        <div class="article-placeholder">
+                            <i class="fas fa-code"></i>
+                            <span class="article-category">Web Dev</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                        <i class="far fa-calendar"></i> Dec 5, 2025 &bull; 5 min read
+                    </div>
+                    <h3><a href="#">Building a Portfolio System</a></h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Moving from static HTML to a unified Design System with semantic CSS variables.</p>
+                    <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Read Article</a>
+                </article>
+
+                <article class="card blog-item" data-category="network">
+                    <div style="margin: -2rem -2rem 1.5rem -2rem;">
+                        <div class="article-placeholder">
+                            <i class="fas fa-network-wired"></i>
+                            <span class="article-category">Networking</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                        <i class="far fa-calendar"></i> Oct 15, 2025 &bull; 8 min read
+                    </div>
+                    <h3><a href="#">Understanding VLANs</a></h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">A practical guide to breaking down Virtual LANs with Cisco Packet Tracer examples.</p>
+                    <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Read Article</a>
+                </article>
+
+                <article class="card blog-item" data-category="ai">
+                    <div style="margin: -2rem -2rem 1.5rem -2rem;">
+                        <div class="article-placeholder">
+                            <i class="fas fa-toolbox"></i>
+                            <span class="article-category">Productivity</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                        <i class="far fa-calendar"></i> Nov 20, 2025 &bull; 3 min read
+                    </div>
+                    <h3><a href="#">Top 5 Tools for Analysts</a></h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Wireshark tricks and Notion templates for managing IT projects efficiently.</p>
+                    <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">Read Article</a>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Sikuku Joseph. <a href="index.html" style="color: var(--primary);">Back to Home</a></p>
         </div>
-      </article>
+    </footer>
 
-      <article class="article-card">
-        <div class="card-img">
-          <i class="fas fa-toolbox"></i>
-          <span class="card-tag">Productivity</span>
-        </div>
-        <div class="card-content">
-          <div class="meta">
-            <span><i class="far fa-calendar"></i> Nov 20, 2025</span>
-            <span><i class="far fa-clock"></i> 3 min read</span>
-          </div>
-          <h2><a href="#">Top 5 Tools for IT Analysts</a></h2>
-          <p>A quick look at my favorite tools for staying productive, including Wireshark tricks and Notion templates for project management.</p>
-          <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-
-      <article class="article-card">
-        <div class="card-img">
-          <i class="fas fa-network-wired"></i>
-          <span class="card-tag">Networking</span>
-        </div>
-        <div class="card-content">
-          <div class="meta">
-            <span><i class="far fa-calendar"></i> Oct 15, 2025</span>
-            <span><i class="far fa-clock"></i> 8 min read</span>
-          </div>
-          <h2><a href="#">Understanding VLANs: A Practical Guide</a></h2>
-          <p>Breaking down Virtual LANs with Cisco Packet Tracer examples. How to segment traffic for security and performance.</p>
-          <a href="#" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-
-    </div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; <span id="year"></span> Sikuku Joseph | <a href="index.html">Back to Home</a></p>
-    </div>
-  </footer>
-
-  <script>
-    // 1. Dynamic Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // 2. Theme Logic (Shared with Index)
-    const toggleBtn = document.getElementById("toggle-theme");
-    const icon = toggleBtn.querySelector('i');
+    <script src="main.js"></script>
     
-    // Check local storage so theme matches your Index page
-    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute("data-theme", savedTheme);
-    updateIcon(savedTheme);
+    <script>
+        const pills = document.querySelectorAll('.filter-pill');
+        const posts = document.querySelectorAll('.blog-item');
 
-    toggleBtn.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme");
-      const next = current === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem('theme', next); // Persist across pages
-      updateIcon(next);
-    });
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                // Remove active class from all
+                pills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
 
-    function updateIcon(theme) {
-      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
-  </script>
+                const filter = pill.getAttribute('data-filter');
+
+                posts.forEach(post => {
+                    if (filter === 'all' || post.getAttribute('data-category') === filter) {
+                        post.classList.remove('hidden');
+                        // Add slight fade in
+                        post.style.opacity = '0';
+                        setTimeout(() => post.style.opacity = '1', 50);
+                    } else {
+                        post.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
