@@ -217,3 +217,139 @@ footer {
     50% { border-color: var(--primary); }
     100% { border-color: transparent; }
 }
+/* --- GOD MODE STYLES --- */
+
+/* 1. STATUS BAR (Grafana Style) */
+#system-status-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: #0f172a;
+    border-top: 1px solid #334155;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    z-index: 9999;
+    padding: 0 1rem;
+}
+
+.status-item { display: flex; align-items: center; gap: 8px; }
+.status-dot { color: #10b981; font-size: 0.5rem; }
+.pulse { animation: pulse-animation 2s infinite; }
+
+@keyframes pulse-animation {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+/* 2. TERMINAL OVERLAY */
+#term-toggle-btn {
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    cursor: pointer;
+    z-index: 10000;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+}
+#term-toggle-btn:hover { transform: scale(1.1); }
+
+#terminal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#terminal-overlay.hidden { display: none; }
+
+.terminal-window {
+    width: 800px;
+    max-width: 90%;
+    height: 500px;
+    background: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #333;
+    font-family: 'Courier New', monospace;
+}
+
+.term-header {
+    background: #2d2d2d;
+    padding: 10px 15px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.term-buttons { display: flex; gap: 8px; }
+.close-btn, .min-btn, .max-btn {
+    width: 12px; height: 12px; border-radius: 50%; display: inline-block; cursor: pointer;
+}
+.close-btn { background: #ff5f56; }
+.min-btn { background: #ffbd2e; }
+.max-btn { background: #27c93f; }
+
+.term-title {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    color: #999; font-size: 0.85rem; font-weight: 600;
+}
+
+.term-body {
+    flex: 1;
+    padding: 20px;
+    background: #1e1e1e; /* Classic Dark */
+    color: #d4d4d4;
+    overflow-y: auto;
+    font-size: 0.95rem;
+    border-radius: 0 0 8px 8px;
+}
+
+.term-output p { margin-bottom: 5px; }
+.cmd-highlight { color: #fce78e; }
+.prompt { color: #10b981; font-weight: bold; margin-right: 10px; }
+
+.input-line { display: flex; align-items: center; }
+#term-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1;
+    outline: none;
+}
+
+.term-response { color: #cecece; margin-top: 5px; line-height: 1.5; }
+.grid-help {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 10px;
+    color: #a8a8a8;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+    .mobile-hide { display: none; }
+    .terminal-window { height: 70vh; }
+    #term-toggle-btn { bottom: 80px; } /* Above status bar */
+}
