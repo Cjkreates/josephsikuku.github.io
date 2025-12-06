@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- SCROLL PROGRESS BAR ---
+window.addEventListener('scroll', () => {
+    const progressBar = document.getElementById('scroll-progress');
+    if (progressBar) {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (scrollTop / scrollHeight) * 100;
+        progressBar.style.width = scrolled + "%";
+    }
+});
     // 1. Theme Toggle
     const themeBtn = document.getElementById('theme-toggle');
     const html = document.documentElement;
