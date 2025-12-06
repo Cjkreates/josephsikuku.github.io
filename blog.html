@@ -3,24 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Technical tutorials, network analysis, and AI experiments by Sikuku Joseph.">
     <title>Blog | Sikuku Joseph</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Blog Filter Pills */
+        /* --- NEW STYLES FOR SEARCH & LOAD MORE --- */
+        .controls-container {
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        /* Search Bar */
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        /* Filter Pills */
         .filter-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 0.8rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
         }
-        
         .filter-pill {
             background: var(--bg);
             border: 1px solid var(--border);
@@ -32,29 +68,38 @@
             font-weight: 500;
             transition: all 0.2s;
         }
-
         .filter-pill:hover, .filter-pill.active {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
-            transform: translateY(-2px);
         }
 
-        /* Article Image Placeholder */
-        .article-placeholder {
-            height: 180px;
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--text-muted);
-            position: relative;
+        /* Load More Button */
+        .load-more-container {
+            text-align: center;
+            margin-top: 3rem;
         }
-        
-        /* Animation class for filtering */
-        .blog-item { transition: opacity 0.3s ease, transform 0.3s ease; }
+        .btn-load {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-load:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-load:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Animations */
+        .blog-item { transition: opacity 0.3s ease; }
     </style>
 </head>
 <body>
@@ -62,14 +107,11 @@
     <nav class="navbar">
         <div class="container nav-content">
             <a href="index.html" class="logo">Sikuku<span class="text-gradient">.Dev</span></a>
-            
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="index.html#projects">Projects</a>
                 <a href="portfolio-showcase.html" style="color: var(--secondary)">DevOps Case Study</a>
                 <a href="blog.html" class="active">Blog</a>
             </div>
-
             <div class="nav-actions">
                 <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
                 <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
@@ -79,23 +121,34 @@
 
     <main>
         <header class="hero container animate-on-scroll">
-            <h1>Tech <span class="text-gradient">News & Insights</span></h1>
-            <p>Curated articles on DevOps, Networking, and AI fetched live from the community.</p>
+            <h1>Tech <span class="text-gradient">Insights</span></h1>
+            <p>DevOps, Networking, and AI knowledge base.</p>
         </header>
 
         <section class="container section-padding" style="padding-top: 0;">
             
-            <div class="filter-container">
-                <button class="filter-pill active" onclick="fetchNews('devops')">DevOps</button>
-                <button class="filter-pill" onclick="fetchNews('networking')">Networking</button>
-                <button class="filter-pill" onclick="fetchNews('ai')">AI & ML</button>
-                <button class="filter-pill" onclick="fetchNews('webdev')">Web Dev</button>
+            <div class="controls-container">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search articles...">
+                </div>
+
+                <div class="filter-container">
+                    <button class="filter-pill active" onclick="changeCategory('devops')">DevOps</button>
+                    <button class="filter-pill" onclick="changeCategory('networking')">Networking</button>
+                    <button class="filter-pill" onclick="changeCategory('ai')">AI & ML</button>
+                    <button class="filter-pill" onclick="changeCategory('webdev')">Web Dev</button>
+                </div>
             </div>
 
             <div class="grid-3" id="blog-container">
-                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                    <i class="fas fa-spinner fa-spin fa-2x"></i>
+                <div class="card" style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--text-muted);">
+                    <i class="fas fa-circle-notch fa-spin fa-2x"></i>
                 </div>
+            </div>
+
+            <div class="load-more-container">
+                <button id="loadMoreBtn" class="btn-load">Load More Articles</button>
             </div>
 
         </section>
@@ -103,138 +156,152 @@
     
     <footer>
         <div class="container">
-            <p>&copy; <span id="year"></span> Sikuku Joseph. <a href="index.html" style="color: var(--primary);">Back to Home</a></p>
+            <p>&copy; <span id="year"></span> Sikuku Joseph.</p>
         </div>
     </footer>
 
     <script src="main.js"></script>
     
     <script>
+        // --- CONFIGURATION ---
+        let currentCategory = 'devops';
+        let currentPage = 1;
+        let allArticles = []; // Store fetched articles for local searching
         const container = document.getElementById('blog-container');
-        const pills = document.querySelectorAll('.filter-pill');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const searchInput = document.getElementById('searchInput');
 
-        // --- 1. BACKUP DATA (Loads if API fails) ---
+        // --- FALLBACK DATA ---
         const fallbackData = [
-            {
-                title: "DevOps Best Practices for 2025",
-                description: "A deep dive into how CI/CD pipelines are evolving with AI integration. Learn about the latest tools in the ecosystem.",
-                url: "#",
-                cover_image: null,
-                published_at: new Date().toISOString(),
-                reading_time_minutes: 5,
-                tag_list: ["devops"]
-            },
-            {
-                title: "Understanding VLANs and Subnetting",
-                description: "Breaking down complex network segmentation into simple concepts. A guide for new Network Engineers.",
-                url: "#",
-                cover_image: null,
-                published_at: new Date().toISOString(),
-                reading_time_minutes: 8,
-                tag_list: ["networking"]
-            },
-            {
-                title: "Python for Automation",
-                description: "How to automate boring IT tasks using simple Python scripts. Save time and reduce errors.",
-                url: "#",
-                cover_image: null,
-                published_at: new Date().toISOString(),
-                reading_time_minutes: 4,
-                tag_list: ["automation"]
-            }
+            { title: "DevOps Best Practices 2025", description: "CI/CD pipelines evolving with AI.", url: "#", tag_list: ["devops"], reading_time_minutes: 5, published_at: new Date().toISOString() },
+            { title: "Understanding VLANs", description: "Network segmentation basics.", url: "#", tag_list: ["networking"], reading_time_minutes: 8, published_at: new Date().toISOString() },
+            { title: "Python Automation", description: "Scripting for IT Analysts.", url: "#", tag_list: ["automation"], reading_time_minutes: 4, published_at: new Date().toISOString() }
         ];
 
-        // --- 2. MAIN FETCH FUNCTION ---
-        async function fetchNews(tag) {
-            // UI: Handle Active Button State
-            pills.forEach(p => p.classList.remove('active'));
-            
-            // Logic to handle click vs initial load
-            if (window.event && window.event.type === 'click') {
-                window.event.target.classList.add('active');
-            } else {
-                // Find the button that matches the tag
-                const btn = Array.from(pills).find(b => b.innerText.toLowerCase().includes(tag.replace('webdev', 'web')));
-                if(btn) btn.classList.add('active');
-            }
+        // --- 1. CHANGE CATEGORY ---
+        function changeCategory(tag) {
+            // Update UI
+            document.querySelectorAll('.filter-pill').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase().includes(tag.replace('webdev','web'))) btn.classList.add('active');
+            });
 
-            // UI: Show Loading Spinner
-            container.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--text-muted);">
-                    <i class="fas fa-circle-notch fa-spin fa-2x"></i>
-                    <p style="margin-top: 1rem;">Fetching latest ${tag} news...</p>
-                </div>
-            `;
+            // Reset Logic
+            currentCategory = tag;
+            currentPage = 1;
+            allArticles = []; // Clear local cache
+            container.innerHTML = ''; // Clear grid
+            searchInput.value = ''; // Clear search
+            
+            fetchArticles();
+        }
+
+        // --- 2. FETCH ARTICLES (API) ---
+        async function fetchArticles() {
+            loadMoreBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Loading...';
+            loadMoreBtn.disabled = true;
 
             try {
-                // Attempt Fetch with a 3-second timeout
+                // Timeout logic
                 const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 3000);
+                const timeoutId = setTimeout(() => controller.abort(), 4000);
 
-                const response = await fetch(`https://dev.to/api/articles?tag=${tag}&top=7&per_page=6`, {
-                    signal: controller.signal
-                });
+                const response = await fetch(`https://dev.to/api/articles?tag=${currentCategory}&top=30&per_page=6&page=${currentPage}`, { signal: controller.signal });
                 clearTimeout(timeoutId);
 
-                if (!response.ok) throw new Error("API Limit or Network Error");
+                if (!response.ok) throw new Error("API Error");
                 
-                const articles = await response.json();
+                const newArticles = await response.json();
                 
-                if (articles.length === 0) throw new Error("No articles found");
+                if (newArticles.length === 0 && currentPage === 1) throw new Error("No articles");
+                if (newArticles.length === 0) {
+                    loadMoreBtn.innerText = "No more articles";
+                    return;
+                }
 
-                renderArticles(articles, tag);
+                // Add to local list and render
+                allArticles = [...allArticles, ...newArticles];
+                renderArticles(newArticles);
+                
+                loadMoreBtn.innerHTML = 'Load More Articles';
+                loadMoreBtn.disabled = false;
+                currentPage++; // Setup for next page
 
             } catch (error) {
-                console.warn("API failed or timed out, loading fallback data.", error);
-                renderArticles(fallbackData, tag);
+                console.warn("Fetch failed:", error);
+                if(currentPage === 1) renderArticles(fallbackData);
+                loadMoreBtn.style.display = 'none'; // Hide button on error
             }
         }
 
         // --- 3. RENDER FUNCTION ---
-        function renderArticles(articles, tag) {
-            container.innerHTML = ''; // Clear spinner
-
+        function renderArticles(articles) {
             articles.forEach(article => {
-                // Format Date
-                const dateStr = article.published_at ? new Date(article.published_at).toLocaleDateString('en-US', {
-                    month: 'short', day: 'numeric'
-                }) : 'Recently';
-
-                // Handle Missing Image
+                const dateStr = article.published_at ? new Date(article.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'Recent';
                 const imageHTML = article.cover_image 
-                    ? `<img src="${article.cover_image}" alt="${article.title}" style="width: 100%; height: 180px; object-fit: cover;">`
-                    : `<div class="article-placeholder"><i class="fas fa-newspaper"></i></div>`;
+                    ? `<img src="${article.cover_image}" alt="Cover" style="width: 100%; height: 180px; object-fit: cover;">`
+                    : `<div class="article-placeholder" style="height: 180px; background: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--text-muted); border-bottom: 1px solid var(--border);"><i class="fas fa-newspaper"></i></div>`;
 
-                // Create Card
                 const card = document.createElement('article');
                 card.className = 'card blog-item animate-on-scroll';
                 card.innerHTML = `
                     <div style="margin: -2rem -2rem 1.5rem -2rem; position: relative;">
                         ${imageHTML}
-                        <div style="position: absolute; top: 1rem; left: 1rem; background: var(--primary); color: white; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;">
-                            ${tag}
-                        </div>
+                        <button onclick="shareArticle('${article.title}', '${article.url}')" style="position: absolute; top: 1rem; right: 1rem; background: white; border: none; padding: 8px; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"><i class="fas fa-share-alt" style="color: var(--text-main);"></i></button>
                     </div>
                     <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                        <i class="far fa-calendar"></i> ${dateStr} &bull; ${article.reading_time_minutes || 5} min read
+                        <i class="far fa-calendar"></i> ${dateStr} &bull; ${article.reading_time_minutes || 5} min
                     </div>
-                    <h3 style="margin-bottom: 0.5rem; line-height: 1.3; font-size: 1.25rem;">
-                        <a href="${article.url}" target="_blank" style="transition: color 0.2s;">${article.title}</a>
-                    </h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                        ${article.description || "Click to read the full article..."}
-                    </p>
-                    <a href="${article.url}" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center;">
-                        Read Article <i class="fas fa-external-link-alt" style="margin-left: 8px;"></i>
-                    </a>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;"><a href="${article.url}" target="_blank">${article.title}</a></h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${article.description || 'Click to read more...'}</p>
+                    <a href="${article.url}" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center;">Read Article</a>
                 `;
                 container.appendChild(card);
             });
         }
 
-        // --- 4. INITIAL LOAD ---
+        // --- 4. SEARCH FUNCTION (Client Side) ---
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            container.innerHTML = ''; // Clear grid
+            
+            // Filter the articles we have already loaded
+            const filtered = allArticles.filter(art => 
+                art.title.toLowerCase().includes(term) || 
+                (art.description && art.description.toLowerCase().includes(term))
+            );
+
+            if (filtered.length > 0) {
+                renderArticles(filtered);
+                loadMoreBtn.style.display = 'none'; // Hide load more when searching
+            } else {
+                container.innerHTML = `<p style="grid-column: 1/-1; text-align: center;">No matches found.</p>`;
+            }
+
+            if (term === '') {
+                renderArticles(allArticles); // Restore all
+                loadMoreBtn.style.display = 'inline-block';
+            }
+        });
+
+        // --- 5. SHARE FEATURE ---
+        async function shareArticle(title, url) {
+            if (navigator.share) {
+                try {
+                    await navigator.share({ title: title, url: url });
+                } catch (err) { console.log('Share canceled'); }
+            } else {
+                alert('URL copied to clipboard!');
+                navigator.clipboard.writeText(url);
+            }
+        }
+
+        // --- 6. EVENT LISTENERS ---
+        loadMoreBtn.addEventListener('click', fetchArticles);
+        
+        // Initial Load
         document.addEventListener('DOMContentLoaded', () => {
-            fetchNews('devops');
+            changeCategory('devops');
         });
     </script>
 </body>
