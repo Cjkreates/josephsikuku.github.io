@@ -142,3 +142,57 @@ function startPipeline() {
 function closePipeline() {
     document.getElementById('pipeline-overlay').classList.add('hidden');
 }
+
+/* --- COMMAND PALETTE LOGIC --- */
+const palette = document.getElementById('cmd-palette');
+const cmdInput = document.getElementById('cmd-input');
+const cmdResults = document.getElementById('cmd-results');
+
+const commands = [
+    { title: "Home", icon: "home", action: () => window.location.href = "index.html" },
+    { title: "View Resume", icon: "file-pdf", action: () => window.open("joseph_sikuku_resume.pdf", "_blank") },
+    { title: "DevOps Case Study", icon: "server", action: () => window.location.href = "portfolio-showcase.html" },
+    { title: "Read Blog", icon: "rss", action: () => window.location.href = "blog.html" },
+    { title: "Contact Me", icon: "envelope", action: () => window.location.href = "index.html#contact" },
+    { title: "Toggle Theme", icon: "adjust", action: () => document.getElementById('theme-toggle').click() }
+];
+
+function togglePalette() {
+    palette.classList.toggle('hidden');
+    if(!palette.classList.contains('hidden')) {
+        cmdInput.value = '';
+        renderCommands(commands);
+        cmdInput.focus();
+    }
+}
+
+function renderCommands(list) {
+    cmdResults.innerHTML = '';
+    list.forEach((cmd, index) => {
+        const div = document.createElement('div');
+        div.className = `cmd-item ${index === 0 ? 'selected' : ''}`;
+        div.innerHTML = `<span><i class="fas fa-${cmd.icon}"></i> ${cmd.title}</span> <i class="fas fa-chevron-right" style="font-size:0.8rem;"></i>`;
+        div.onclick = () => {
+            cmd.action();
+            togglePalette();
+        };
+        cmdResults.appendChild(div);
+    });
+}
+
+// Open on Ctrl+K or Cmd+K
+document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        togglePalette();
+    }
+    // Close on Escape
+    if (e.key === 'Escape' && !palette.classList.contains('hidden')) togglePalette();
+});
+
+// Filter Logic
+cmdInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    const filtered = commands.filter(c => c.title.toLowerCase().includes(term));
+    renderCommands(filtered);
+});
