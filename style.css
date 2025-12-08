@@ -353,3 +353,68 @@ footer {
     .terminal-window { height: 70vh; }
     #term-toggle-btn { bottom: 80px; } /* Above status bar */
 }
+/* --- PIPELINE SIMULATOR STYLES --- */
+.deploy-trigger-btn {
+    position: fixed;
+    bottom: 110px; /* Above the Terminal Button */
+    right: 30px;
+    background: #10b981; /* Green */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    cursor: pointer;
+    z-index: 10000;
+    transition: transform 0.2s;
+    display: flex; align-items: center; gap: 8px;
+}
+.deploy-trigger-btn:hover { transform: scale(1.05); }
+
+.pipeline-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    z-index: 10002;
+    display: flex; align-items: center; justify-content: center;
+}
+.pipeline-overlay.hidden { display: none; }
+
+.pipeline-window {
+    width: 700px; max-width: 90%;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    font-family: 'Courier New', monospace;
+}
+
+.pipeline-header {
+    background: #1e293b; padding: 15px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid #334155; color: white;
+}
+.close-pipeline { background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.2rem; }
+.close-pipeline:hover { color: white; }
+
+.pipeline-stages {
+    display: flex; padding: 15px; gap: 10px; background: #0f172a; border-bottom: 1px solid #334155;
+}
+.stage {
+    flex: 1; padding: 8px; text-align: center; border-radius: 4px;
+    background: #1e293b; color: #64748b; font-size: 0.8rem; font-weight: 600;
+    transition: all 0.3s;
+}
+.stage.active { background: #3b82f6; color: white; }
+.stage.success { background: #10b981; color: white; }
+
+.pipeline-logs {
+    height: 300px; padding: 15px; overflow-y: auto;
+    color: #cbd5e1; font-size: 0.9rem; line-height: 1.5;
+}
+.log-line { margin-bottom: 4px; }
+.log-info { color: #60a5fa; }
+.log-success { color: #34d399; }
+.log-warn { color: #facc15; }

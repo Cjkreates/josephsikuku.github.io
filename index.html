@@ -254,5 +254,26 @@
 <script src="godmode.js"></script> </body>
 </body>
 <script src="main.js"></script>
-<script src="animations.js"></script> </body>
+<script src="animations.js"></script> 
+<div id="pipeline-overlay" class="pipeline-overlay hidden">
+    <div class="pipeline-window">
+        <div class="pipeline-header">
+            <div class="pipeline-title"><i class="fas fa-cog fa-spin"></i> Production Deployment Pipeline</div>
+            <button onclick="closePipeline()" class="close-pipeline"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="pipeline-stages">
+            <div class="stage" id="stage-1"><i class="fas fa-circle-notch"></i> Init</div>
+            <div class="stage" id="stage-2"><i class="fas fa-circle-notch"></i> Build</div>
+            <div class="stage" id="stage-3"><i class="fas fa-circle-notch"></i> Test</div>
+            <div class="stage" id="stage-4"><i class="fas fa-circle-notch"></i> Deploy</div>
+        </div>
+        <div class="pipeline-logs" id="pipeline-logs">
+            </div>
+    </div>
+</div>
+
+<button onclick="startPipeline()" class="deploy-trigger-btn">
+    <i class="fas fa-rocket"></i> Deploy to Prod
+</button>
+</body>
 </html>
