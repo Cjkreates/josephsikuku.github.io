@@ -306,7 +306,17 @@
     </script>
     <script src="main.js"></script>
 <script src="animations.js"></script>
-<script src="godmode.js"></script> </body>
-
+<script src="godmode.js"></script> 
+<div id="cmd-palette" class="hidden">
+    <div class="cmd-wrapper">
+        <input type="text" id="cmd-input" placeholder="Search commands... (e.g. 'Resume', 'Home', 'Blog')" autocomplete="off">
+        <div class="cmd-results" id="cmd-results">
+            </div>
+        <div class="cmd-footer">
+            <span><i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i> to navigate</span>
+            <span><i class="fas fa-level-down-alt"></i> to select</span>
+        </div>
+    </div>
+</div>
 </body>
 </html>
