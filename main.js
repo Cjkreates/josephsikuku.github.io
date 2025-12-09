@@ -1,4 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+/* --- 3D TAG CLOUD SETUP --- */
+const myTags = [
+    'Python', 'Docker', 'Kubernetes', 'Terraform',
+    'Cisco', 'Linux', 'Bash', 'Git', 'Jenkins',
+    'AWS', 'Azure', 'MySQL', 'MongoDB',
+    'Grafana', 'Prometheus', 'Ansible', 'Nginx'
+];
+
+// Config for the Cloud
+TagCloud('.tagcloud', myTags, {
+    radius: 250,
+    maxSpeed: 'fast',
+    initSpeed: 'normal',
+    direction: 135,
+    keep: true,
+    useContainerInlineStyles: false
+});
+
+// Add custom color style for the text
+document.querySelector('.tagcloud').style.color = 'var(--primary)';
+document.querySelector('.tagcloud').style.fontWeight = 'bold';
+
     
     // --- SCROLL PROGRESS BAR ---
 window.addEventListener('scroll', () => {
@@ -10,6 +33,7 @@ window.addEventListener('scroll', () => {
         progressBar.style.width = scrolled + "%";
     }
 });
+
     // 1. Theme Toggle
     const themeBtn = document.getElementById('theme-toggle');
     const html = document.documentElement;
